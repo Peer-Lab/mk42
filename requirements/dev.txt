@@ -2,3 +2,6 @@
 # requirements/dev.txt
 
 -r common.txt
+
+pypiup==0.0.2
+django-debug-toolbar==1.8

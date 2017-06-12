@@ -1,0 +1,2 @@
+# mk42
+# mk42/static/robots.txt

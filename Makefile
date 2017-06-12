@@ -7,15 +7,6 @@ create-virtualenv:
 pip-install:
 	pip install -r requirements/dev.txt
 
-install-node:
-	cd tmp && curl http://nodejs.org/dist/node-latest.tar.gz | tar xvz && cd node-v* && ./configure --prefix=$(VIRTUAL_ENV) && make install && cd .. && rm -rf node-v*
-
-install-bower:
-	npm install -g bower
-
-install-eslint:
-	npm install -g eslint
-
 messages: makemessages compilemessages
 
 makemessages:
@@ -36,19 +27,10 @@ migrate:
 makemigrations:
 	./manage.py makemigrations --settings=$(shell basename $(CURDIR)).settings.dev --traceback
 
-bower-install:
-	./manage.py bower install --settings=$(shell basename $(CURDIR)).settings.dev --traceback
-
-bower-update:
-	./manage.py bower update --settings=$(shell basename $(CURDIR)).settings.dev --traceback
-
 static: collectstatic compress
 
 collectstatic:
 	./manage.py collectstatic --settings=$(shell basename $(CURDIR)).settings.dev --traceback --noinput
-
-compress:
-	./manage.py compress --settings=$(shell basename $(CURDIR)).settings.dev --traceback -f
 
 shell:
 	./manage.py shell --settings=$(shell basename $(CURDIR)).settings.dev --traceback
