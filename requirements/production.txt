@@ -1,0 +1,4 @@
+# mk42
+# requirements/production.txt
+
+-r common.txt

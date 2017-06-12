@@ -1,0 +1,4 @@
+# mk42
+# requirements/data.txt
+
+GeoLite==06.2017  # http://dev.maxmind.com/geoip/legacy/geolite/

@@ -1,0 +1,4 @@
+# mk42
+# requirements/dev.txt
+
+-r common.txt

@@ -1,0 +1,6 @@
+# mk42
+# .autoenv
+
+if [ -f .env/`arch`/bin/activate ]; then
+    source .env/`arch`/bin/activate
+fi
