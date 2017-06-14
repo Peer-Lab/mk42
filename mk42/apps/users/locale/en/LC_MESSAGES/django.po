@@ -1,0 +1,70 @@
+# mk42
+# mk42/apps/users/locale/en/LC_MESSAGES/django.po
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: mk42\n"
+"Report-Msgid-Bugs-To: Alexei Andrushievich <vint21h@vint21h.pp.ua>\n"
+"POT-Creation-Date: 2017-06-14 00:11+0000\n"
+"PO-Revision-Date: 2017-06-13 19:25+0000\n"
+"Last-Translator: Alexei Andrushievich <vint21h@vint21h.pp.ua>\n"
+"Language-Team: Alexei Andrushievich <vint21h@vint21h.pp.ua>\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: admin/user.py:46
+msgid "Personal info"
+msgstr ""
+
+#: admin/user.py:47
+msgid "Permissions"
+msgstr ""
+
+#: admin/user.py:48
+msgid "Important dates"
+msgstr ""
+
+#: admin/user.py:49
+msgid "Settings"
+msgstr ""
+
+#: admin/user.py:68
+msgid ""
+"Clear all selected users sessions (logout from all logged in devices) (can "
+"take very long time)"
+msgstr ""
+
+#: api/serializers/user.py:26
+msgid "full name"
+msgstr ""
+
+#: api/serializers/user.py:27
+msgid "short name"
+msgstr ""
+
+#: api/serializers/user.py:28 models/user.py:33
+msgid "country"
+msgstr ""
+
+#: apps.py:23
+msgid "Users"
+msgstr ""
+
+#: models/user.py:31
+msgid "ID"
+msgstr ""
+
+#: models/user.py:32
+msgid "language"
+msgstr ""
+
+#: models/user.py:48
+msgid "user"
+msgstr ""
+
+#: models/user.py:49
+msgid "users"
+msgstr ""
