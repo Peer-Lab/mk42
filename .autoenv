@@ -4,3 +4,7 @@
 if [ -f .env/`arch`/bin/activate ]; then
     source .env/`arch`/bin/activate
 fi
+
+if [ -f .credentials ]; then
+    source .credentials
+fi

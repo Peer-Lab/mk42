@@ -6,11 +6,10 @@
 from __future__ import unicode_literals
 import os
 import sys
-from string import rstrip
 from collections import OrderedDict
-from decimal import Decimal
 
 from kombu import Queue
+import environ
 
 import djcelery
 
@@ -19,6 +18,8 @@ from mk42.version import (
     __updated__,
 )
 
+
+env = environ.Env()
 
 NAME = "mk42"
 ENVIRONMENT = ""
@@ -37,7 +38,6 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "django.contrib.sites",
-    "django.contrib.flatpages",
     "django.contrib.sitemaps",
     # third part
     "sitemetrics",
@@ -60,6 +60,7 @@ INSTALLED_APPS = [
     "watson",
     # mk42 libs
     # mk42
+    "mk42.apps.users",
 ]
 
 MIDDLEWARE = [
@@ -74,6 +75,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     # third part
     # mk42
+    "mk42.lib.utils.middleware.StripLanguagePrefix",
 ]
 APPEND_SLASH = True
 
@@ -123,6 +125,7 @@ LANGUAGE_CODE = "en"
 gettext = lambda s: s
 LANGUAGES = (
     ("en", "English"),
+    ("uk", "Українська"),
 )
 DEFAULT_LANGUAGE = "en"
 TIME_ZONE = "UTC"
@@ -180,7 +183,7 @@ CELERY_ROUTES = {
 }
 
 # email settings
-EMAIL_BACKEND = "mk42.backends.email.CeleryTemplateEmailBackend"
+EMAIL_BACKEND = "mk42.lib.utils.backends.email.CeleryTemplateEmailBackend"
 CELERY_EMAIL_TASK_CONFIG = {
     "queue": "email",
     "rate_limit": "30/m",
@@ -191,12 +194,7 @@ DJVERSION_VERSION = __version__
 DJVERSION_UPDATED = __updated__
 
 # auth settings
-AUTHENTICATION_BACKENDS = [
-    "mk42.apps.users.auth.backends.UserModelBackend",
-]
 AUTH_USER_MODEL = "users.User"
-LOGIN_URL = "users:login"
-LOGIN_REDIRECT_URL = "index"
 
 # site framework settings
 SITE_ID = 1

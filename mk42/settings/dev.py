@@ -25,12 +25,12 @@ MIDDLEWARE += [
 WSGI_APPLICATION = "mk42.wsgi.dev.application"
 
 # for old django and django reusable applications config fix
-DATABASE_ENGINE = "sqlite3"
-DATABASE_NAME = os.path.join(BASE_DIR, "data/db/{name}.sqlite3".format(**{"name": NAME, })).replace("\\", "/")
-DATABASE_USER = ""
-DATABASE_PASSWORD = ""
-DATABASE_HOST = ""
-DATABASE_PORT = ""
+DATABASE_ENGINE = env.db().get("ENGINE").split(".")[-1]
+DATABASE_NAME = env.db().get("NAME")
+DATABASE_USER = env.db().get("USER")
+DATABASE_PASSWORD = env.db().get("PASSWORD")
+DATABASE_HOST = env.db().get("HOST")
+DATABASE_PORT = env.db().get("PORT")
 
 DATABASES = {
     "default": {
@@ -44,10 +44,10 @@ DATABASES = {
 }
 
 # redis settings
-REDIS_DB = 4
-REDIS_PASSWORD = ""
-REDIS_HOST = "localhost"
-REDIS_PORT = 6379
+REDIS_DB = env.dict("REDIS_URL").get("db")
+REDIS_PASSWORD = env.dict("REDIS_URL").get("password")
+REDIS_HOST = env.dict("REDIS_URL").get("host")
+REDIS_PORT = env.dict("REDIS_URL").get("port")
 REDIS_CONNECTION = {
     "db": REDIS_DB,
     "host": REDIS_HOST,
@@ -56,21 +56,16 @@ REDIS_CONNECTION = {
 }
 
 # celery settings
-BROKER_URL = "amqp://mk42:mk42@localhost:5672/mk42"
+BROKER_URL = env("BROKER_URL")
 
 # e-mail settings
-EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
-DEFAULT_FROM_EMAIL = "noreply@mk42.local"
-DEFAULT_FROM_EMAIL_SENDER = "mk42"
+EMAIL_BACKEND = env.email_url().get("EMAIL_BACKEND")
+DEFAULT_FROM_EMAIL = env.email_url().get("OPTIONS").get("DEFAULT_FROM_EMAIL")
+DEFAULT_FROM_EMAIL_SENDER = env.email_url().get("OPTIONS").get("DEFAULT_FROM_EMAIL_SENDER")
 
 # cache
 CACHES = {
-    "default": {
-        "BACKEND": "django.core.cache.backends.memcached.MemcachedCache",
-        "LOCATION": "127.0.0.1:11211",
-        "TIMEOUT": 600,
-        "KEY_PREFIX": "mk42",
-    },
+    "default": env.cache(),
 }
 
 INTERNAL_IPS = (

@@ -39,4 +39,6 @@ urlpatterns += i18n_patterns(
 urlpatterns += []
 
 # mk42 i18n urls patterns
-urlpatterns += i18n_patterns()
+urlpatterns += i18n_patterns(
+    url(r"^users/", include("mk42.apps.users.urls", namespace="users", app_name="users")),  # users app
+)

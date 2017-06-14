@@ -42,7 +42,10 @@ merge-and-push-all:
 	git co master && git merge dev && git co test && git merge master && git co dev && git push --all && git push --tags
 
 clear:
-	../dev-scp/clear.sh
+	../dev-scp/clear.sh && rm -rf tmp/index.html tmp/docs.zip
 
 update-geoip-db:
 	cd tmp && wget http://geolite.maxmind.com/download/geoip/database/GeoLiteCountry/GeoIP.dat.gz && gunzip GeoIP.dat.gz && mv GeoIP.dat ../data/GeoIP/GeoIP.dat
+
+docs:
+	rst2html README.rst > tmp/index.html && zip tmp/docs.zip tmp/index.html

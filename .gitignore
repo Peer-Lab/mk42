@@ -34,3 +34,4 @@ static/*
 components/*
 bower_components/*
 node_modules/*
+.credentials
