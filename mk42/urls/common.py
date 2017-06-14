@@ -11,6 +11,7 @@ from django.conf.urls import url
 from django.conf.urls.i18n import i18n_patterns
 
 from rest_framework.authtoken.views import obtain_auth_token
+from rest_framework.schemas import get_schema_view
 
 
 urlpatterns = []
@@ -23,22 +24,30 @@ urlpatterns += [
 ]
 
 # third part apps i18n urls patterns
-urlpatterns += i18n_patterns()
+urlpatterns += i18n_patterns(
+    url(r"^get-api-token/", obtain_auth_token, name="get-api-token"),
+)
 
 # django urls patterns
 urlpatterns += [
     url(r"^i18n/", include("django.conf.urls.i18n")),
+    url(r"^admin/", include(admin.site.urls)),
 ]
 
 # django i18n urls patterns
 urlpatterns += i18n_patterns(
+    url(r"^i18n/", include("django.conf.urls.i18n")),
     url(r"^admin/", include(admin.site.urls)),
 )
 
 # mk42 urls patterns
-urlpatterns += []
+urlpatterns += [
+    url(r"^$", get_schema_view(title="API")),
+]
 
 # mk42 i18n urls patterns
 urlpatterns += i18n_patterns(
     url(r"^users/", include("mk42.apps.users.urls", namespace="users", app_name="users")),  # users app
+    url(r"^core/", include("mk42.apps.core.urls", namespace="core", app_name="core")),  # core app
+    url(r"^$", get_schema_view(title="API")),
 )

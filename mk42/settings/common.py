@@ -26,7 +26,7 @@ ENVIRONMENT = ""
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))).replace("\\", "/")
 sys.path.insert(0, BASE_DIR)
 
-SECRET_KEY = "^kxmxe50xasr%e!w+_5+5e5$tbq2ptfu2sa43jm1vkmsxabvjx"
+SECRET_KEY = env("SECRET_KEY")
 
 # apps
 INSTALLED_APPS = [
@@ -62,6 +62,7 @@ INSTALLED_APPS = [
     # mk42 libs
     # mk42
     "mk42.apps.users",
+    "mk42.apps.core",
 ]
 
 MIDDLEWARE = [
@@ -69,6 +70,7 @@ MIDDLEWARE = [
     # django
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
+    "django.middleware.locale.LocaleMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
