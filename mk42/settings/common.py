@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     "djcelery",
     "sorl.thumbnail",
     "rest_framework",
+    "rest_framework.authtoken",
     "django_filters",
     "redactor",
     "django_countries",
