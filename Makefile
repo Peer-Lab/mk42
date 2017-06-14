@@ -39,7 +39,7 @@ dbshell:
 	./manage.py dbshell --settings=$(shell basename $(CURDIR)).settings.dev --traceback
 
 merge-and-push-all:
-	git co master && git merge dev && git co test && git merge master && git co dev && git push --all && git push --tags
+	git co master && git merge dev && git co dev && git push --all && git push --tags
 
 clear:
 	../dev-scp/clear.sh && rm -rf tmp/index.html tmp/docs.zip
