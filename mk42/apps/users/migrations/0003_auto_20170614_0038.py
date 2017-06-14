@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 # mk42
 # mk42/apps/users/migrations/0003_auto_20170614_0038.py
 

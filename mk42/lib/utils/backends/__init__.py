@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 # mk42
 # mk42/lib/utils/backends/__init__.py
 

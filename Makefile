@@ -27,7 +27,7 @@ migrate:
 makemigrations:
 	./manage.py makemigrations --settings=$(shell basename $(CURDIR)).settings.dev --traceback
 
-static: collectstatic compress
+static: collectstatic
 
 collectstatic:
 	./manage.py collectstatic --settings=$(shell basename $(CURDIR)).settings.dev --traceback --noinput

@@ -60,7 +60,7 @@ class UserPermissions(BasePermission):
         :param view: view set.
         :type view: mk42.apps.users.api.viewsets.user.UserViewset.
         :param obj: user model instance.
-        :type obj: mk42.apps.users.models.user.UserDELETE.
+        :type obj: mk42.apps.users.models.user.User.
         :return: permission is granted.
         :rtype: bool.
         """

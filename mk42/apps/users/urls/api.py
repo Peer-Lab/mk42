@@ -10,8 +10,6 @@ from django.conf.urls import (
     include,
 )
 
-from rest_framework.schemas import get_schema_view
-
 from mk42.apps.users.api.routers import router
 
 
@@ -21,6 +19,5 @@ __all__ = [
 
 
 api = [
-    url(r"^api/schema/$", get_schema_view(title="Users API")),
     url(r"^api/", include(router.urls)),
 ]

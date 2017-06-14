@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 # mk42
 # mk42/apps/users/api/serializers/__init__.py
 

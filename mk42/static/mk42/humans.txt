@@ -1,2 +1,20 @@
 # mk42
-# mk42/static/humans.txt
+# mk42/static/mk42/humans.txt
+
+/* TEAM */
+
+    Developer: Alexei Andrushievich
+    Contact: vint21h [at] vint21h.pp.ua
+    From: Ukraine
+
+/* SITE */
+
+    Last update: 2017/06/14
+    Language: English / Українська
+    Components: Pillow, python-memcached, celery, slugify, Markdown, redis, pyuca, coreapi, django-sitemetrics,
+        django-djcopyright, django-annoying, django-robots, django-cors-headers, django-project-version,
+        django-celery-email, django-autoslug, sorl-thumbnail, djangorestframework, django-filter,
+        django-wysiwyg-redactor, django-redis-sessions, django-countries, django-avatar, django-crispy-forms,
+        django-templated-email, django-constance, django-watson, django-celery, django-environ, Django.
+    Software: bpython, django-debug-toolbar, pypiup, sqlite, redis, memcached, rabbitmq, uwsgi, make,
+        reStructuredText, autoenv.
