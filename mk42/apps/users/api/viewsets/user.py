@@ -55,7 +55,7 @@ class UserViewSet(ModelViewSet):
         """
 
         defaults = {
-            "country": GeoIP().country(self.request.META.get("REMOTE_ADDR", None)).get("country_code",""),
+            "country": GeoIP().country(self.request.META.get("REMOTE_ADDR", None)).get("country_code", ""),
             "language": get_language(),
         }
 
