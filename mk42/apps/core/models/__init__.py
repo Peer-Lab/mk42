@@ -6,8 +6,10 @@
 from __future__ import unicode_literals
 
 from mk42.apps.core.models.group import Group
+from mk42.apps.core.models.membership import Membership
 
 
 __all__ = [
     "Group",
+    "Membership",
 ]
