@@ -6,4 +6,9 @@
 from __future__ import unicode_literals
 
 
-__all__ = []
+__all__ = [
+    "default_app_config",
+]
+
+
+default_app_config = "mk42.apps.core.apps.Config"

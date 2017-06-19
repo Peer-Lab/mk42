@@ -1,69 +1,62 @@
 # -*- coding: utf-8 -*-
 
 # mk42
-# mk42/apps/core/api/viewsets/group.py
+# mk42/apps/core/api/viewsets/membership.py
 
 from __future__ import unicode_literals
 
 from rest_framework.viewsets import ModelViewSet
-from rest_framework.filters import (
-    SearchFilter,
-    OrderingFilter,
-)
+from rest_framework.filters import OrderingFilter
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.decorators import list_route
 from rest_framework.response import Response
 
-from mk42.apps.core.models.group import Group
-from mk42.apps.core.api.serializers.group import GroupSerializer
-from mk42.apps.core.api.permissions.group import GroupPermissions
-from mk42.apps.core.api.filters.group import GroupFilter
+from mk42.apps.core.models.membership import Membership
+from mk42.apps.core.api.serializers.membership import MembershipSerializer
+from mk42.apps.core.api.permissions.membership import MembershipPermissions
 from mk42.lib.utils.pagination import ExtendedPageNumberPagination
 from mk42.constants import GET
 
 
 __all__ = [
-    "GroupViewSet",
+    "MembershipViewSet",
 ]
 
 
-class GroupViewSet(ModelViewSet):
+class MembershipViewSet(ModelViewSet):
     """
-    Group view set.
+    Membership view set.
     """
 
-    queryset = Group.objects.all()
-    serializer_class = GroupSerializer
+    queryset = Membership.objects.all()
+    serializer_class = MembershipSerializer
     filter_backends = [
         DjangoFilterBackend,
         OrderingFilter,
-        SearchFilter,
     ]
     pagination_class = ExtendedPageNumberPagination
-    filter_class = GroupFilter
-    permission_classes = [GroupPermissions, ]
-    filter_fields = ["active", "owner", ]
-    ordering_fields = ["name", "created", "updated", ]
-    search_fields = ["name", ]
+    permission_classes = [MembershipPermissions, ]
+    filter_fields = ["user", "group", ]
+    ordering_fields = ["created", ]
 
     def perform_create(self, serializer):
         """
-        Override to set group owner.
+        Override to set membership user.
 
-        :param serializer: instance of group model serializer.
-        :type serializer: mk42.apps.core.api.serializers.group.GroupSerializer.
+        :param serializer: instance of membership model serializer.
+        :type serializer: mk42.apps.core.api.serializers.membership.MembershipSerializer.
         """
 
         defaults = {
-            "owner": self.request.user,
+            "user": self.request.user,
         }
 
         serializer.save(**defaults)
 
     @list_route(methods=[GET, ])
-    def active(self, request, **kwargs):
+    def my(self, request, **kwargs):
         """
-        Return only active groups.
+        Return only user memberships.
 
         :param request: django request instance.
         :type request: django.http.request.HttpRequest.
@@ -73,7 +66,7 @@ class GroupViewSet(ModelViewSet):
         :rtype: rest_framework.response.Response.
         """
 
-        queryset = self.filter_queryset(queryset=Group.objects.active())
+        queryset = self.filter_queryset(queryset=Membership.objects.filter(user=request.user))
         page = self.paginate_queryset(queryset)
 
         if page is not None:

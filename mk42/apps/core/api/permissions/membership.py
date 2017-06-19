@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 # mk42
-# mk42/apps/core/api/permissions/group.py
+# mk42/apps/core/api/permissions/membership.py
 
 from __future__ import unicode_literals
 
@@ -14,18 +14,17 @@ from rest_framework.compat import is_authenticated
 from mk42.constants import (
     POST,
     DELETE,
-    PATCH,
 )
 
 
 __all__ = [
-    "GroupPermissions",
+    "MembershipPermissions",
 ]
 
 
-class GroupPermissions(BasePermission):
+class MembershipPermissions(BasePermission):
     """
-    Group permissions.
+    Membership permissions.
     """
 
     def has_permission(self, request, view):
@@ -35,7 +34,7 @@ class GroupPermissions(BasePermission):
         :param request: django request instance.
         :type request: django.http.request.HttpRequest.
         :param view: view set.
-        :type view: mk42.apps.core.api.viewsets.group.GroupViewset.
+        :type view: mk42.apps.core.api.viewsets.membership.MembershipViewset.
         :return: permission is granted.
         :rtype: bool.
         """
@@ -45,11 +44,11 @@ class GroupPermissions(BasePermission):
             return True
 
         if all([request.method == POST, is_authenticated(request.user), ]):
-            # Allow create groups only for authenticated users.
+            # Allow join to groups only for authenticated users.
             return True
 
-        if request.method == PATCH:
-            # In futures steps of flow allow user edit self owned groups.
+        if request.method == DELETE:
+            # In futures steps of flow allow user delete own membership.
             return True
 
     def has_object_permission(self, request, view, obj):
@@ -66,13 +65,9 @@ class GroupPermissions(BasePermission):
         :rtype: bool.
         """
 
-        if obj.owner == request.user:
-            # Allow only owner edit objects.
+        if all([obj.user == request.user, request.method == DELETE, ]):
+            # Allow only delete membership.
             return True
-
-        if request.method == DELETE:
-            # Disallow delete groups by anyone.
-            return False
 
         if request.method in SAFE_METHODS:
             # Read permissions are allowed to any request, so we'll always allow GET, HEAD or OPTIONS requests.

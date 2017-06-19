@@ -5,7 +5,7 @@
 Pillow==4.1.1
 python-memcached==1.58
 celery==3.1.23
-slugify==0.0.1
+awesome-slugify==1.6.5
 Markdown==2.6.8
 redis==2.10.5
 pyuca==1.1.2

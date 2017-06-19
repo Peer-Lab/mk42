@@ -23,4 +23,4 @@ class GroupFilter(FilterSet):
     class Meta:
 
         model = Group
-        fields = ["id", "active", "owner", ]
+        fields = ["active", "owner", ]
