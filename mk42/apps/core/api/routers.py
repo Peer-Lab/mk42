@@ -16,3 +16,4 @@ router = DefaultRouter()
 # registering viewsets
 router.register(r"group", GroupViewSet)
 router.register(r"membership", MembershipViewSet)
+router.register(r"event", EventViewSet)
