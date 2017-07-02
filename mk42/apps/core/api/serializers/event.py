@@ -32,7 +32,7 @@ class EventSerializer(serializers.ModelSerializer):
         fields = [
             "id",
             "name",
-            "description"
+            "description",
             "group",
             "start",
             "created",
