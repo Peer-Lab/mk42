@@ -17,14 +17,15 @@ __all__ = [
 
 class EventSerializer(serializers.ModelSerializer):
     """
-    Membership serializer.
+    Event serializer.
     """
 
     class Meta:
 
         model = Event
         read_only_fields = [
-            "created",
+            "created", 
+            "updated",
         ]
         extra_kwargs = {
             "url": {"view_name": "core:event-detail", },
@@ -36,4 +37,6 @@ class EventSerializer(serializers.ModelSerializer):
             "group",
             "start",
             "created",
+            "updated",
+            "url",
         ]

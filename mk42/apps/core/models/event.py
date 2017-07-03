@@ -10,12 +10,10 @@ import uuid
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.conf import settings
-#from django.db.models.signals import post_save
+
 
 from redactor.fields import RedactorField
 
-#from mk42.apps.core.managers.group import GroupManager
-#from mk42.apps.core.signals.group import post_save_group
 
 
 __all__ = [
@@ -32,10 +30,10 @@ class Event(models.Model):
     name = models.CharField(verbose_name=_("name"), max_length=256, db_index=True, unique=True)
     description = RedactorField(verbose_name=_("description"), blank=True, null=True, db_index=True)
     group = models.ForeignKey("core.Group", verbose_name=_("group"), db_index=True, related_name="events")
-    start = models.DateTimeField(verbose_name=_("start date/time"), blank=True, null=True, db_index=True, auto_now=True)
+    start = models.DateTimeField(verbose_name=_("start date/time"), blank=True, null=True, db_index=True)
     created = models.DateTimeField(verbose_name=_("created date/time"), blank=True, null=True, db_index=True, auto_now_add=True)
+    updated = models.DateTimeField(verbose_name=_("start date/time"), blank=True, null=True, db_index=True, auto_now=True)
 
-    #objects = GroupManager()
 
     class Meta:
 
@@ -53,5 +51,3 @@ class Event(models.Model):
         return self.__unicode__()
 
 
-# register signals
-#post_save.connect(post_save_group, sender=Group)
