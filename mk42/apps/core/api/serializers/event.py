@@ -35,6 +35,7 @@ class EventSerializer(serializers.ModelSerializer):
             "name",
             "description",
             "group",
+            "address",
             "start",
             "created",
             "updated",

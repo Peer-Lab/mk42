@@ -30,8 +30,8 @@ class Event(models.Model):
     name = models.CharField(verbose_name=_("name"), max_length=256, db_index=True, unique=True)
     description = RedactorField(verbose_name=_("description"), blank=True, null=True, db_index=True)
     group = models.ForeignKey("core.Group", verbose_name=_("group"), db_index=True, related_name="events")
-    address = models.CharField(verbose_name=_("address"), max_length=256, blank=False, db_index=True)
-    start = models.DateTimeField(verbose_name=_("start date/time"), blank=False, db_index=True)
+    address = models.CharField(verbose_name=_("address"), max_length=256, blank=False, null=True, db_index=True)
+    start = models.DateTimeField(verbose_name=_("start date/time"), blank=False, null=True, db_index=True)
     created = models.DateTimeField(verbose_name=_("created date/time"), blank=True, null=True, db_index=True, auto_now_add=True)
     updated = models.DateTimeField(verbose_name=_("start date/time"), blank=True, null=True, db_index=True, auto_now=True)
 

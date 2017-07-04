@@ -19,13 +19,13 @@ class EventAdmin(admin.ModelAdmin):
     Customize Event model for admin area.
     """
 
-    list_display = ["id", "name" "group", "start", "created", "updated", ]
+    list_display = ["id", "name", "group", "address", "start", "created", "updated", ]
     list_filter = ["group", ]
     search_fields = ["id", "name", "description", ]
     date_hierarchy = "created"
     readonly_fields = ["created", "updated", ]
     fieldsets = (
-        [None, {"fields": ["name", "description", "group", "start"], }, ],
+        [None, {"fields": ["name", "description", "group", "address", "start"], }, ],
         [_("Other"), {"fields": ["created", "updated", ], }, ],
     )
 
