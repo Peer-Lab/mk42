@@ -19,7 +19,9 @@ from mk42.version import (
 )
 
 
+# read credentials from file
 env = environ.Env()
+env.read_env(env_file=".credentials")
 
 NAME = "mk42"
 ENVIRONMENT = ""

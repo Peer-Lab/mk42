@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 # mk42
-# mk42/settings/common.py
+# mk42/settings/dev.py
 
 from __future__ import unicode_literals
 import os

@@ -14,6 +14,7 @@ from django.conf import settings
 
 from avatar.templatetags.avatar_tags import avatar_url
 from django_countries.fields import CountryField
+from rest_framework.authtoken.models import Token
 
 from mk42.apps.users.managers.user import UserManager
 
@@ -52,8 +53,10 @@ class User(AbstractUser):
 
     def kick(self):
         """
-        Clear all user sessions (logout from all logged in devices).
+        Clear all user sessions and API keys (logout from all logged in devices).
         """
+
+        Token.objects.filter(user=self).delete()  # delete all user API keys
 
         sessions = Session.objects.all()
 
