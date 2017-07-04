@@ -45,7 +45,7 @@ class EventPermissions(BasePermission):
             return True
 
         if all([request.method == POST, is_authenticated(request.user), ]):
-            # Allow create groups only for authenticated users.
+            # Allow create events only for authenticated users.
             return True
 
         if request.method == PATCH:
@@ -66,8 +66,8 @@ class EventPermissions(BasePermission):
         :rtype: bool.
         """
 
-        if obj.owner == request.user:
-            # Allow only owner edit objects.
+        if obj.group.owner == request.user:
+            # Allow only group owner edit objects.
             return True
 
         if request.method == DELETE:

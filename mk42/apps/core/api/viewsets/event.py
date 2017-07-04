@@ -8,15 +8,11 @@ from __future__ import unicode_literals
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.filters import OrderingFilter
 from django_filters.rest_framework import DjangoFilterBackend
-from rest_framework.decorators import list_route
-from rest_framework.response import Response
 
 from mk42.apps.core.models.event import Event
-from mk42.apps.core.models.membership import Membership
 from mk42.apps.core.api.serializers.event import EventSerializer
 from mk42.apps.core.api.permissions.event import EventPermissions
 from mk42.lib.utils.pagination import ExtendedPageNumberPagination
-from mk42.constants import GET
 
 
 __all__ = [
@@ -29,12 +25,8 @@ class EventViewSet(ModelViewSet):
     Event view set.
     """
 
-    queryset = Event.objects.all()
-    
-
+    queryset = Event.objects.all() 
     serializer_class = EventSerializer
-    
-
     filter_backends = [
         DjangoFilterBackend,
         OrderingFilter,
