@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mk42\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-19 20:41+0000\n"
+"POT-Creation-Date: 2017-07-05 06:31+0000\n"
 "PO-Revision-Date: 2017-06-13 19:25+0000\n"
 "Last-Translator: Alexei Andrushievich <vint21h@vint21h.pp.ua>\n"
 "Language-Team: Alexei Andrushievich <vint21h@vint21h.pp.ua>\n"
@@ -45,7 +45,7 @@ msgstr ""
 msgid "short name"
 msgstr ""
 
-#: api/serializers/user.py:28 models/user.py:33
+#: api/serializers/user.py:28 models/user.py:34
 msgid "country"
 msgstr ""
 
@@ -53,18 +53,18 @@ msgstr ""
 msgid "Users"
 msgstr ""
 
-#: models/user.py:31
+#: models/user.py:32
 msgid "ID"
 msgstr ""
 
-#: models/user.py:32
+#: models/user.py:33
 msgid "language"
 msgstr ""
 
-#: models/user.py:48
+#: models/user.py:49
 msgid "user"
 msgstr ""
 
-#: models/user.py:49
+#: models/user.py:50
 msgid "users"
 msgstr ""
