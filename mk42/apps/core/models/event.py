@@ -38,6 +38,7 @@ class Event(models.Model):
 
     class Meta:
 
+        unique_together = ["group", "start",]
         app_label = "core"
         verbose_name = _("event")
         verbose_name_plural = _("events")
