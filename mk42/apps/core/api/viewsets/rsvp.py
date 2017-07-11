@@ -19,7 +19,7 @@ from mk42.constants import GET
 
 
 __all__ = [
-    "PSVPViewSet",
+    "RSVPViewSet",
 ]
 
 

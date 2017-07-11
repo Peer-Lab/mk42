@@ -44,11 +44,11 @@ class RSVPPermissions(BasePermission):
             return True
 
         if all([request.method == POST, is_authenticated(request.user), ]):
-            # Allow join to groups only for authenticated users.
+            # Allow join to event only for authenticated users.
             return True
 
         if request.method == DELETE:
-            # In futures steps of flow allow user delete own membership.
+            # In futures steps of flow allow user delete own RSVP.
             return True
 
     def has_object_permission(self, request, view, obj):
@@ -66,7 +66,7 @@ class RSVPPermissions(BasePermission):
         """
 
         if all([obj.user == request.user, request.method == DELETE, ]):
-            # Allow only delete membership.
+            # Allow only delete RSVP.
             return True
 
         if request.method in SAFE_METHODS:

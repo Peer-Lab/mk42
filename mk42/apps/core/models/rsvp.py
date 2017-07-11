@@ -23,7 +23,7 @@ class RSVP(models.Model):
 
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False, verbose_name=_("ID"))
     user = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name=_("user"), db_index=True, related_name="rsvp")
-    event = models.ForeignKey("core.Event",  verbose_name=_("group"), db_index=True, related_name="rsvp")
+    event = models.ForeignKey("core.Event",  verbose_name=_("event"), db_index=True, related_name="rsvp")
     created = models.DateTimeField(verbose_name=_("created date/time"), blank=True, null=True, db_index=True, auto_now_add=True)
 
 
@@ -38,7 +38,7 @@ class RSVP(models.Model):
 
         return "{user}: {event}".format(**{
             "user": self.user,
-            "event": self.group,
+            "event": self.event,
         })
 
     def __str__(self):
