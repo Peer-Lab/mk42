@@ -15,7 +15,7 @@ __all__ = [
 
 
 # project start date: 12.06.2017
-# project last update date: 11.07.2017
+# project last update date: 13.07.2017
 
 
 VERSION = (0, 0, 0)
