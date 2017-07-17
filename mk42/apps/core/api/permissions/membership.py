@@ -14,7 +14,9 @@ from rest_framework.compat import is_authenticated
 from mk42.constants import (
     POST,
     DELETE,
+    PATCH,
 )
+from mk42.apps.core.models.membership import Membership
 
 
 __all__ = [
@@ -58,15 +60,19 @@ class MembershipPermissions(BasePermission):
         :param request: django request instance.
         :type request: django.http.request.HttpRequest.
         :param view: view set.
-        :type view: mk42.apps.core.api.viewsets.group.GroupsViewset.
-        :param obj: group model instance.
-        :type obj: mk42.apps.core.models.group.Group.
+        :type view: mk42.apps.core.api.viewsets.membership.MembershipViewset.
+        :param obj: membership model instance.
+        :type obj: mk42.apps.core.models.membership.Membership.
         :return: permission is granted.
         :rtype: bool.
         """
 
         if all([obj.user == request.user, request.method == DELETE, ]):
             # Allow only delete membership.
+            return True
+
+        if all([request.method == PATCH, request.user == obj.group.owner]):
+            # Allow only membership group owner edit user membership (approve it).
             return True
 
         if request.method in SAFE_METHODS:
