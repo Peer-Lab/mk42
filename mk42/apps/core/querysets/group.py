@@ -4,6 +4,7 @@
 # mk42/apps/core/querysets/groups.py
 
 from __future__ import unicode_literals
+
 from django.db import models
 
 
