@@ -14,6 +14,7 @@ from rest_framework.response import Response
 from mk42.apps.core.models.membership import Membership
 from mk42.apps.core.api.serializers.membership import MembershipSerializer
 from mk42.apps.core.api.permissions.membership import MembershipPermissions
+from mk42.apps.core.api.filters.membership import MembershipFilter
 from mk42.lib.utils.pagination import ExtendedPageNumberPagination
 from mk42.constants import GET
 
@@ -35,8 +36,9 @@ class MembershipViewSet(ModelViewSet):
         OrderingFilter,
     ]
     pagination_class = ExtendedPageNumberPagination
+    filter_class = MembershipFilter
     permission_classes = [MembershipPermissions, ]
-    filter_fields = ["user", "group", ]
+    filter_fields = ["user", "group", "active", ]
     ordering_fields = ["created", ]
 
     def perform_create(self, serializer):
