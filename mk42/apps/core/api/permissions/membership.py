@@ -49,11 +49,11 @@ class MembershipPermissions(BasePermission):
             # Allow join to groups only for authenticated users.
             return True
 
-        if request.method == DELETE:
+        if all([request.method == DELETE, is_authenticated(request.user), ]):
             # In futures steps of flow allow user delete own membership.
             return True
 
-        if request.method == PATCH:
+        if all([request.method == PATCH, is_authenticated(request.user), ]):
             # In futures steps of flow allow owner of group to activate membership
             return True
 
@@ -72,7 +72,7 @@ class MembershipPermissions(BasePermission):
         """
 
         if all([obj.user == request.user, request.method == DELETE, ]):
-            # Allow only delete membership.
+            # Allow to delete only self-owned membership.
             return True
 
         if all([request.method == PATCH, request.user == obj.group.owner, ]):

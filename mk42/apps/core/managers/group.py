@@ -43,3 +43,17 @@ class GroupManager(models.Manager):
         """
 
         return self.get_queryset().active(*args, **kwargs)
+
+    def inactive(self, *args, **kwargs):
+        """
+        Return inactive groups.
+
+        :param args: additional args.
+        :type args: list.
+        :param kwargs: additional args.
+        :type kwargs: dict.
+        :return: queryset with inactive groups.
+        :rtype: django.db.models.query.QuerySet.
+        """
+
+        return self.get_queryset().inactive(*args, **kwargs)

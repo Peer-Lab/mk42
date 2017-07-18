@@ -45,3 +45,4 @@ class MembershipQuerySet(models.QuerySet):
         """
 
         return self.filter(active=False)
+        
