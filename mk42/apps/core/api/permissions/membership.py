@@ -53,6 +53,10 @@ class MembershipPermissions(BasePermission):
             # In futures steps of flow allow user delete own membership.
             return True
 
+        if request.method == PATCH:
+            # In futures steps of flow allow owner of group to activate membership
+            return True
+
     def has_object_permission(self, request, view, obj):
         """
         Show/edit/delete object permission.
