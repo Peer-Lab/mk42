@@ -34,5 +34,6 @@ class MembershipSerializer(serializers.ModelSerializer):
             "user",
             "group",
             "created",
+            "active",
             "url",
         ]
