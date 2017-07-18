@@ -44,3 +44,17 @@ class GroupAdmin(admin.ModelAdmin):
         queryset.update(active=True)
 
     activate.short_description = _("Make all selected groups active")
+
+    def deactivate(self, request, queryset):
+        """
+        Deactivate all selected groups
+
+        :param request: django request instance.
+        :type request: django.http.request.HttpRequest.
+        :param queryset: queryset with selected groups.
+        :type queryset: django.db.models.query.QuerySet.
+        """
+
+        queryset.update(active=False)
+
+    deactivate.short_description = _("Deactivate all selected groups")
