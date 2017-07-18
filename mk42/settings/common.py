@@ -19,14 +19,14 @@ from mk42.version import (
 )
 
 
-# read credentials from file
-env = environ.Env()
-env.read_env(env_file=".credentials")
-
 NAME = "mk42"
 ENVIRONMENT = ""
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))).replace("\\", "/")
 sys.path.insert(0, BASE_DIR)
+
+# read credentials from file
+env = environ.Env()
+env.read_env(env_file=os.path.join(BASE_DIR, ".credentials"))
 
 SECRET_KEY = env("SECRET_KEY")
 

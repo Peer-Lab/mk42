@@ -19,11 +19,12 @@ class MembershipAdmin(admin.ModelAdmin):
     Customize Membership model for admin area.
     """
 
-    list_display = ["id", "user", "group", "created", ]
+    list_display = ["id", "user", "group", "created", "active", ]
     list_filter = ["group", ]
     date_hierarchy = "created"
     readonly_fields = ["created", ]
+    list_editable = ["active", ]
     fieldsets = (
         [None, {"fields": ["user", "group", ], }, ],
-        [_("Other"), {"fields": ["created", ], }, ],
+        [_("Other"), {"fields": ["created", "active", ], }, ],
     )
