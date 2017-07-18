@@ -25,7 +25,7 @@ class Membership(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name=_("user"), db_index=True, related_name="membership")
     group = models.ForeignKey("core.Group", verbose_name=_("group"), db_index=True, related_name="members")
     created = models.DateTimeField(verbose_name=_("created date/time"), blank=True, null=True, db_index=True, auto_now_add=True)
-    approved = models.BooleanField(verbose_name=_("approved"), db_index=True, default=False)
+    active = models.BooleanField(verbose_name=_("active"), db_index=True, default=False)
 
     class Meta:
 

@@ -71,7 +71,7 @@ class MembershipPermissions(BasePermission):
             # Allow only delete membership.
             return True
 
-        if all([request.method == PATCH, request.user == obj.group.owner]):
+        if all([request.method == PATCH, request.user == obj.group.owner, ]):
             # Allow only membership group owner edit user membership (approve it).
             return True
 
