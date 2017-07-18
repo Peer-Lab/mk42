@@ -35,7 +35,7 @@ class MembershipAdmin(admin.ModelAdmin):
 
         :param request: django request instance.
         :type request: django.http.request.HttpRequest.
-        :param queryset: queryset with selected groups.
+        :param queryset: queryset with selected memberships.
         :type queryset: django.db.models.query.QuerySet.
         """
 
@@ -49,7 +49,7 @@ class MembershipAdmin(admin.ModelAdmin):
 
         :param request: django request instance.
         :type request: django.http.request.HttpRequest.
-        :param queryset: queryset with selected groups.
+        :param queryset: queryset with selected memberships.
         :type queryset: django.db.models.query.QuerySet.
         """
 
