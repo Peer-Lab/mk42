@@ -134,3 +134,28 @@ class GroupViewSet(ModelViewSet):
         serializer = self.get_serializer(queryset, many=True)
 
         return Response(serializer.data)
+
+    @list_route(methods=[GET, ])
+    def my__active(self, request, **kwargs):
+        """
+        Return only active user owned groups.
+
+        :param request: django request instance.
+        :type request: django.http.request.HttpRequest.
+        :param kwargs: additional args.
+        :type kwargs: dict.
+        :return: serialized custom queryset response.
+        :rtype: rest_framework.response.Response.
+        """
+
+        queryset = self.filter_queryset(queryset=Group.objects.filter(owner=request.user).active())
+        page = self.paginate_queryset(queryset)
+
+        if page is not None:
+            serializer = self.get_serializer(page, many=True)
+
+            return self.get_paginated_response(serializer.data)
+
+        serializer = self.get_serializer(queryset, many=True)
+
+        return Response(serializer.data)

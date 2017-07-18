@@ -66,7 +66,7 @@ class GroupPermissions(BasePermission):
         :rtype: bool.
         """
 
-        if all([requset.method == PATCH, obj.owner == request.user, ]):
+        if all([request.method == PATCH, obj.owner == request.user, ]):
             # Allow only owner edit groups.
             return True
 
