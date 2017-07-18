@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mk42\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-11 20:22+0000\n"
+"POT-Creation-Date: 2017-07-18 14:08+0000\n"
 "PO-Revision-Date: 2017-06-13 19:25+0000\n"
 "Last-Translator: Alexei Andrushievich <vint21h@vint21h.pp.ua>\n"
 "Language-Team: Alexei Andrushievich <vint21h@vint21h.pp.ua>\n"
@@ -79,7 +79,7 @@ msgstr ""
 msgid "updated date/time"
 msgstr ""
 
-#: models/group.py:38
+#: models/group.py:38 models/membership.py:28
 msgid "active"
 msgstr ""
 
@@ -91,7 +91,7 @@ msgstr ""
 msgid "user"
 msgstr ""
 
-#: models/membership.py:32 models/membership.py:33
+#: models/membership.py:33 models/membership.py:34
 msgid "membership"
 msgstr ""
 

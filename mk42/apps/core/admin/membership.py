@@ -23,6 +23,7 @@ class MembershipAdmin(admin.ModelAdmin):
     list_filter = ["group", ]
     date_hierarchy = "created"
     readonly_fields = ["created", ]
+    list_editable = ["active", ]
     fieldsets = (
         [None, {"fields": ["user", "group", ], }, ],
         [_("Other"), {"fields": ["created", "active", ], }, ],

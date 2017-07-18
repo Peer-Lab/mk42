@@ -24,6 +24,7 @@ class GroupAdmin(admin.ModelAdmin):
     search_fields = ["id", "name", ]
     date_hierarchy = "created"
     readonly_fields = ["created", "updated", ]
+    list_editable = ["active", ]
     fieldsets = (
         [None, {"fields": ["name", "owner", "description", ], }, ],
         [_("Other"), {"fields": ["created", "updated", "active", "slug", ], }, ],
