@@ -72,7 +72,7 @@ class MembershipPermissions(BasePermission):
             return True
 
         if all([request.method == PATCH, request.user == obj.group.owner, ]):
-            # Allow only membership group owner edit user membership (approve it).
+            # Allow only membership group owner edit user membership (activate it).
             return True
 
         if request.method in SAFE_METHODS:
