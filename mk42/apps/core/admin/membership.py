@@ -31,7 +31,7 @@ class MembershipAdmin(admin.ModelAdmin):
 
     def activate(self, request, queryset):
         """
-        Activate selected memberships.
+        Make all selected memberships active.
 
         :param request: django request instance.
         :type request: django.http.request.HttpRequest.
@@ -41,11 +41,11 @@ class MembershipAdmin(admin.ModelAdmin):
 
         queryset.update(active=True)
 
-    activate.short_description = _("Make all selected memberships active")
+    activate.short_description = _("Activate selected memberships")
 
     def deactivate(self, request, queryset):
         """
-        Deactivate selected memberships.
+        Deactivate all selected memberships.
 
         :param request: django request instance.
         :type request: django.http.request.HttpRequest.
@@ -55,4 +55,4 @@ class MembershipAdmin(admin.ModelAdmin):
 
         queryset.update(active=False)
 
-    deactivate.short_description = _("Deactivate all selected memberships")
+    deactivate.short_description = _("Deactivate selected memberships")

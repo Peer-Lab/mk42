@@ -33,7 +33,7 @@ class GroupAdmin(admin.ModelAdmin):
 
     def activate(self, request, queryset):
         """
-        Activate selected groups.
+        Make all selected groups active.
 
         :param request: django request instance.
         :type request: django.http.request.HttpRequest.
@@ -43,11 +43,11 @@ class GroupAdmin(admin.ModelAdmin):
 
         queryset.update(active=True)
 
-    activate.short_description = _("Make all selected groups active")
+    activate.short_description = _("Activate selected groups")
 
     def deactivate(self, request, queryset):
         """
-        Deactivate selected groups.
+        Deactivate all selected groups.
 
         :param request: django request instance.
         :type request: django.http.request.HttpRequest.
@@ -57,4 +57,4 @@ class GroupAdmin(admin.ModelAdmin):
 
         queryset.update(active=False)
 
-    deactivate.short_description = _("Deactivate all selected groups")
+    deactivate.short_description = _("Deactivate selected groups")
