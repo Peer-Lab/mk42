@@ -15,7 +15,7 @@ __all__ = [
 
 def post_save_group(sender, instance, created, **kwargs):
     """
-    Create group membership for group owner.
+    Create group membership for group owner and send email notification.
 
     :param sender: sender model class.
     :type sender: object.
@@ -30,3 +30,4 @@ def post_save_group(sender, instance, created, **kwargs):
     if created:
 
         Membership.objects.get_or_create(user=instance.owner, group=instance, active=True)
+        instance.send_registration_email()

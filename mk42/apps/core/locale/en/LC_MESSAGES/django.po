@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mk42\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-18 21:36+0000\n"
+"POT-Creation-Date: 2017-07-19 12:43+0000\n"
 "PO-Revision-Date: 2017-06-13 19:25+0000\n"
 "Last-Translator: Alexei Andrushievich <vint21h@vint21h.pp.ua>\n"
 "Language-Team: Alexei Andrushievich <vint21h@vint21h.pp.ua>\n"
@@ -39,20 +39,21 @@ msgstr ""
 msgid "Core"
 msgstr ""
 
-#: models/event.py:29 models/group.py:31 models/membership.py:25
+#: models/event.py:29 models/group.py:38 models/membership.py:25
 #: models/rsvp.py:24
 msgid "ID"
 msgstr ""
 
-#: models/event.py:30 models/group.py:32
+#: models/event.py:30 models/group.py:39
 msgid "name"
 msgstr ""
 
-#: models/event.py:31 models/group.py:35
+#: models/event.py:31 models/group.py:42
 msgid "description"
 msgstr ""
 
-#: models/event.py:32 models/group.py:45 models/membership.py:27
+#: models/event.py:32 models/group.py:52 models/membership.py:27
+#: templates/templated_email/group_registration.email:33
 msgid "group"
 msgstr ""
 
@@ -64,7 +65,7 @@ msgstr ""
 msgid "start date/time"
 msgstr ""
 
-#: models/event.py:35 models/group.py:36 models/membership.py:28
+#: models/event.py:35 models/group.py:43 models/membership.py:28
 #: models/rsvp.py:27
 msgid "created date/time"
 msgstr ""
@@ -77,27 +78,27 @@ msgstr ""
 msgid "events"
 msgstr ""
 
-#: models/group.py:33
+#: models/group.py:40
 msgid "slug"
 msgstr ""
 
-#: models/group.py:33
+#: models/group.py:40
 msgid "overwrite in creation"
 msgstr ""
 
-#: models/group.py:34
+#: models/group.py:41
 msgid "owner"
 msgstr ""
 
-#: models/group.py:37
+#: models/group.py:44
 msgid "updated date/time"
 msgstr ""
 
-#: models/group.py:38 models/membership.py:29
+#: models/group.py:45 models/membership.py:29
 msgid "active"
 msgstr ""
 
-#: models/group.py:46
+#: models/group.py:53
 msgid "groups"
 msgstr ""
 
@@ -111,4 +112,46 @@ msgstr ""
 
 #: models/rsvp.py:33 models/rsvp.py:34
 msgid "rsvp"
+msgstr ""
+
+#: templates/templated_email/group_registration.email:6
+msgid "Registration on"
+msgstr ""
+
+#: templates/templated_email/group_registration.email:10
+#: templates/templated_email/group_registration.email:29
+msgid "Welcome to"
+msgstr ""
+
+#: templates/templated_email/group_registration.email:12
+msgid "You, or somebody else create group"
+msgstr ""
+
+#: templates/templated_email/group_registration.email:14
+#: templates/templated_email/group_registration.email:35
+msgid "If you do not do this please inform us."
+msgstr ""
+
+#: templates/templated_email/group_registration.email:16
+#: templates/templated_email/group_registration.email:37
+msgid "Enjoy working on"
+msgstr ""
+
+#: templates/templated_email/group_registration.email:18
+#: templates/templated_email/group_registration.email:40
+msgid "Yours"
+msgstr ""
+
+#: templates/templated_email/group_registration.email:20
+#: templates/templated_email/group_registration.email:42
+msgid "The"
+msgstr ""
+
+#: templates/templated_email/group_registration.email:20
+#: templates/templated_email/group_registration.email:42
+msgid "team"
+msgstr ""
+
+#: templates/templated_email/group_registration.email:33
+msgid "You, or somebody else create at"
 msgstr ""
