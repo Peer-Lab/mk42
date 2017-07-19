@@ -7,13 +7,9 @@
 
 {% block plain %}
 
-    {% trans "Welcome to" %} {{ site.name }}!
+    {% trans "Hello!" %}
 
-    {% trans "You, or somebody else create group" %} {{ group.name }}
-
-    {% trans "If you do not do this please inform us." %}
-
-    {% trans "Enjoy working on" %} {{ protocol }}//{{ site.domain }}
+    {% trans "You, or somebody else create group" %}
 
     {% trans "Yours" %},
 
@@ -30,11 +26,7 @@
             </h1>
 
             <p>
-                {% trans "You, or somebody else create at" %} <a href="{{ protocol }}//{{ site.domain }}">{{ site.name }}</a> {% trans "group" %} {{ group.name }}
-
-                {% trans "If you do not do this please inform us." %}
-
-                {% trans "Enjoy working on" %} <a href="{{ protocol }}//{{ site.domain }}">{{ site.name }}</a>.
+                {% trans "You, or somebody else create group at" %} <a href="{{ protocol }}//{{ site.domain }}">{{ site.name }}</a>
             </p>
             <p>
                 {% trans "Yours" %},

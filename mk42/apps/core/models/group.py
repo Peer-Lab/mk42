@@ -61,50 +61,6 @@ class Group(models.Model):
 
         return self.__unicode__()
 
-
-    @property
-    def email_context(self):
-        """
-        Return user emails default context.
-
-        :return: default context for user emails.
-        :rtype: dict.
-        """
-
-        return {
-            "user": self,
-            "site": Site.objects.get_current(),
-            "group": Group.objects.get_current(),
-            "FROM_EMAIL": settings.DEFAULT_FROM_EMAIL,
-            "FROM_EMAIL_SENDER": settings.DEFAULT_FROM_EMAIL_SENDER,
-            "FROM": "{sender} <{email}>".format(**{
-                "sender": settings.DEFAULT_FROM_EMAIL_SENDER,
-                "email": settings.DEFAULT_FROM_EMAIL,
-            }),
-            "protocol": settings.URL_PROTOCOL,
-        }
-
-    def send_email(self, template, context):
-        """
-        Send email to user.
-
-        :param template: email template.
-        :type template: unicode.
-        :param context: email context.
-        :type context: dict.
-        """
-
-        context.update(self.email_context)  # update email context by some default values
-        language = get_language()  # remember current language (sometimes it's useful)
-        activate(self.language)
-        send_templated_mail(
-            template_name=template,
-            from_email=context.get("FROM", settings.DEFAULT_FROM_EMAIL),
-            recipient_list=[self.email, ],
-            context=context,
-        )
-        activate(language)
-
     def send_registration_email(self):
         """
         Send registration email to user.
