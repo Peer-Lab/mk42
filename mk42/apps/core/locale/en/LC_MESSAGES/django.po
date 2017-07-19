@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mk42\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-19 19:40+0000\n"
+"POT-Creation-Date: 2017-07-19 19:49+0000\n"
 "PO-Revision-Date: 2017-06-13 19:25+0000\n"
 "Last-Translator: Alexei Andrushievich <vint21h@vint21h.pp.ua>\n"
 "Language-Team: Alexei Andrushievich <vint21h@vint21h.pp.ua>\n"
@@ -39,20 +39,20 @@ msgstr ""
 msgid "Core"
 msgstr ""
 
-#: models/event.py:29 models/group.py:38 models/membership.py:25
+#: models/event.py:29 models/group.py:31 models/membership.py:25
 #: models/rsvp.py:24
 msgid "ID"
 msgstr ""
 
-#: models/event.py:30 models/group.py:39
+#: models/event.py:30 models/group.py:32
 msgid "name"
 msgstr ""
 
-#: models/event.py:31 models/group.py:42
+#: models/event.py:31 models/group.py:35
 msgid "description"
 msgstr ""
 
-#: models/event.py:32 models/group.py:52 models/membership.py:27
+#: models/event.py:32 models/group.py:45 models/membership.py:27
 msgid "group"
 msgstr ""
 
@@ -64,7 +64,7 @@ msgstr ""
 msgid "start date/time"
 msgstr ""
 
-#: models/event.py:35 models/group.py:43 models/membership.py:28
+#: models/event.py:35 models/group.py:36 models/membership.py:28
 #: models/rsvp.py:27
 msgid "created date/time"
 msgstr ""
@@ -77,27 +77,27 @@ msgstr ""
 msgid "events"
 msgstr ""
 
-#: models/group.py:40
+#: models/group.py:33
 msgid "slug"
 msgstr ""
 
-#: models/group.py:40
+#: models/group.py:33
 msgid "overwrite in creation"
 msgstr ""
 
-#: models/group.py:41
+#: models/group.py:34
 msgid "owner"
 msgstr ""
 
-#: models/group.py:44
+#: models/group.py:37
 msgid "updated date/time"
 msgstr ""
 
-#: models/group.py:45 models/membership.py:29
+#: models/group.py:38 models/membership.py:29
 msgid "active"
 msgstr ""
 
-#: models/group.py:53
+#: models/group.py:46
 msgid "groups"
 msgstr ""
 
