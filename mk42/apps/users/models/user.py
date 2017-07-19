@@ -77,7 +77,7 @@ class User(AbstractUser):
     def avatar(self):
         """
         Return user avatar url.
-        
+
         :return: user avatar url.
         :rtype: unicode.
         """

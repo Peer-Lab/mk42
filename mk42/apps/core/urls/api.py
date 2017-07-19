@@ -20,10 +20,11 @@ __all__ = [
 ]
 
 
-# custom views
+# custom endpoints
+# group
 group__my__active = GroupViewSet.as_view({"get": "my__active"})
 group__my__inactive = GroupViewSet.as_view({"get": "my__inactive"})
-
+# membership
 membership__my__active = MembershipViewSet.as_view({"get": "my__active"})
 membership__my__inactive = MembershipViewSet.as_view({"get": "my__inactive"})
 
