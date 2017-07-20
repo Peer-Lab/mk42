@@ -30,4 +30,4 @@ def post_save_group(sender, instance, created, **kwargs):
     if created:
 
         Membership.objects.get_or_create(user=instance.owner, group=instance, active=True)
-        instance.send_registration_email()
+        instance.send_create_group_email()

@@ -9,7 +9,7 @@
 
     {% trans "Hello!" %}
 
-    {% trans "You, or somebody else create group" %}
+    {% trans "You, or somebody else create group" %} {{ group.name }}
 
     {% trans "Yours" %},
 
@@ -26,7 +26,7 @@
             </h1>
 
             <p>
-                {% trans "You, or somebody else create group at" %} <a href="{{ protocol }}//{{ site.domain }}">{{ site.name }}</a>
+                {% trans "You, or somebody else create group at" %} {{ group.name }}
             </p>
             <p>
                 {% trans "Yours" %},
