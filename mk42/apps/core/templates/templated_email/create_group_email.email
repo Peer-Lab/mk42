@@ -3,13 +3,15 @@
 
 {% load i18n %}
 
-{% block subject %}{% trans "Registration on" %} - {{ protocol }}//{{ site.domain }}{% endblock %}
+{% block subject %}{% trans "Group creation at" %} {{ protocol }}//{{ site.domain }}{% endblock %}
 
 {% block plain %}
 
     {% trans "Hello!" %}
 
-    {% trans "You, or somebody else create group" %} {{ group.name }}
+    {% trans "You, or somebody else create group" %} {{ group.name }} {% trans "at" %} {{ protocol }}//{{ site.domain }}
+
+    {% trans "If you do not do this please inform us." %}
 
     {% trans "Yours" %},
 
@@ -22,11 +24,13 @@
     <html>
         <body>
             <h1>
-                {% trans "Welcome to" %} {{ site.name }}!
+                {% trans "Hello!" %}
             </h1>
 
             <p>
-                {% trans "You, or somebody else create group at" %} {{ group.name }}
+                {% trans "You, or somebody else create group" %} {{ group.name }} {% trans "at" %} {{ protocol }}//{{ site.domain }}
+
+                {% trans "If you do not do this please inform us." %}
             </p>
             <p>
                 {% trans "Yours" %},
