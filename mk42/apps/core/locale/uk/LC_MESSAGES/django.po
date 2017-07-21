@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mk42\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-18 21:36+0000\n"
+"POT-Creation-Date: 2017-07-20 19:28+0000\n"
 "PO-Revision-Date: 2017-06-13 19:25+0000\n"
 "Last-Translator: Alexei Andrushievich <vint21h@vint21h.pp.ua>\n"
 "Language-Team: Alexei Andrushievich <vint21h@vint21h.pp.ua>\n"
@@ -113,4 +113,43 @@ msgstr ""
 
 #: models/rsvp.py:33 models/rsvp.py:34
 msgid "rsvp"
+msgstr ""
+
+#: templates/templated_email/create_group_email.email:6
+msgid "Group creation at"
+msgstr ""
+
+#: templates/templated_email/create_group_email.email:10
+#: templates/templated_email/create_group_email.email:27
+msgid "Hello!"
+msgstr ""
+
+#: templates/templated_email/create_group_email.email:12
+#: templates/templated_email/create_group_email.email:31
+msgid "You, or somebody else create group"
+msgstr ""
+
+#: templates/templated_email/create_group_email.email:12
+#: templates/templated_email/create_group_email.email:31
+msgid "at"
+msgstr ""
+
+#: templates/templated_email/create_group_email.email:14
+#: templates/templated_email/create_group_email.email:33
+msgid "If you do not do this please inform us."
+msgstr ""
+
+#: templates/templated_email/create_group_email.email:16
+#: templates/templated_email/create_group_email.email:36
+msgid "Yours"
+msgstr ""
+
+#: templates/templated_email/create_group_email.email:18
+#: templates/templated_email/create_group_email.email:38
+msgid "The"
+msgstr ""
+
+#: templates/templated_email/create_group_email.email:18
+#: templates/templated_email/create_group_email.email:38
+msgid "team"
 msgstr ""
