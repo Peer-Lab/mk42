@@ -30,7 +30,7 @@
             </h1>
 
             <p>
-                {% trans "You, or somebody else register at" %} {% trans "at" %} <a href="{{ protocol }}//{{ site.domain }}">{{ site.name }}</a>.
+                {% trans "You, or somebody else register at" %} <a href="{{ protocol }}//{{ site.domain }}">{{ site.name }}</a>.
 
                 {% trans "If you do not do this please inform us." %}
 
