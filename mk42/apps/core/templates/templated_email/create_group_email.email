@@ -28,7 +28,7 @@
             </h1>
 
             <p>
-                {% trans "You, or somebody else create group" %} {{ group.name }} {% trans "at" %} {{ protocol }}//{{ site.domain }}
+                {% trans "You, or somebody else create group" %} {{ group.name }} <a href="{{ protocol }}//{{ site.domain }}">{{ site.name }}</a>.
 
                 {% trans "If you do not do this please inform us." %}
             </p>
