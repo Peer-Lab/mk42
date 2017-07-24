@@ -54,3 +54,7 @@ DEBUG_TOOLBAR_PANELS = [
 
 # js reverse settings
 JS_REVERSE_EXCLUDE_NAMESPACES += ["djdt", ]
+
+# environment notice settings
+ENVIRONMENT_NAME = "DEV"
+ENVIRONMENT_COLOR = "#DCDCDC"

@@ -69,6 +69,7 @@ REDIS_CONNECTION = {
 
 # apps
 INSTALLED_APPS = [
+    "django_admin_env_notice",  # not right way, but working template overriding
     # django
     "django.contrib.admin",
     "django.contrib.auth",
@@ -108,7 +109,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    "corsheaders.middleware.CorsMiddleware",  # must go first of "django.middleware.common.CommonMiddleware"
+    "corsheaders.middleware.CorsMiddleware",  # must go first of 'django.middleware.common.CommonMiddleware'.
     # django
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
@@ -140,6 +141,7 @@ TEMPLATES = [
                 "django.template.context_processors.i18n",
                 # third part
                 "constance.context_processors.config",
+                "django_admin_env_notice.context_processors.from_settings",
                 # mk42
             ],
             "loaders": [
