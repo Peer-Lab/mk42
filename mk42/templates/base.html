@@ -1,0 +1,39 @@
+{# mk42 #}
+{# mk42/templates/base.html #}
+
+{% load i18n %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="{{ LANGUAGE_CODE }}">
+    <head>
+        <title>{% block title %}{% include "mk42/includes/meta/title.html" %}{% endblock %}</title>
+        <meta name="description" content="{% block description %}{% include "mk42/includes/meta/title.html" %}{% endblock %}"/>
+        {% block meta %}{% endblock %}
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <meta charset="utf-8">
+        <meta http-equiv="Content-Language" content="{{ LANGUAGE_CODE }}"/>
+        <meta name="copyright" content="{% trans "MK42" %}"/>
+        <meta name="keywords" content="{% trans "MK42" %}"/>
+        <meta name="author" content=""/>
+        <meta name="robots" content="all"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="author" href="{% static "humans.txt" %}"/>
+        <link rel="shortcut icon" href="{% static "favicon.ico" %}" type="image/x-icon"/>
+        {% block css %}
+            {% include "mk42/includes/meta/static/css.html" %}
+        {% endblock %}
+    </head>
+    <body>
+        {% block noscript %}
+            {% include "mk42/includes/noscript.html" %}
+        {% endblock %}
+        {% block header %}{% endblock %}
+        {% block content %}{% endblock %}
+        {% block footer %}{% endblock %}
+        {% block js %}
+            {% include "mk42/includes/meta/static/js.html" %}
+        {% endblock %}
+    </body>
+</html>

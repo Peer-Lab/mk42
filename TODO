@@ -1,2 +1,9 @@
 # mk42
 # TODO
+
+ - add js url reverse
+ - add django bower
+ - add django project version
+ - add django copyright
+ - add django compressor
+ - add sitemetrics
