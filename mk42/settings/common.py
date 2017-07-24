@@ -7,6 +7,7 @@ from __future__ import unicode_literals
 import os
 import sys
 from collections import OrderedDict
+from string import rstrip
 
 from kombu import Queue
 import environ
@@ -26,7 +27,7 @@ sys.path.insert(0, BASE_DIR)
 
 # read credentials from file
 env = environ.Env()
-env.read_env(env_file=os.path.join(BASE_DIR, ".credentials"))
+env.read_env(env_file=os.path.join(BASE_DIR, ".credentials").replace("\\", "/"))
 
 SECRET_KEY = env("SECRET_KEY")
 
@@ -98,6 +99,8 @@ INSTALLED_APPS = [
     "constance.backends.database",
     "watson",
     "django_js_reverse",
+    "djangobower",
+    "compressor",
     # mk42 libs
     # mk42
     "mk42.apps.users",
@@ -190,6 +193,8 @@ STATICFILES_FINDERS = (
     "django.contrib.staticfiles.finders.FileSystemFinder",
     "django.contrib.staticfiles.finders.AppDirectoriesFinder",
     # third part
+    "compressor.finders.CompressorFinder",
+    "djangobower.finders.BowerFinder",
 )
 STATIC_URL = "/static/"
 MEDIA_URL = "/media/"
@@ -312,3 +317,13 @@ GOOGLE_MAPS_API_KEY = env("GOOGLE_MAPS_API_KEY")
 
 # js reverse settings
 JS_REVERSE_EXCLUDE_NAMESPACES = ["admin", ]
+
+# bower settings
+BOWER_COMPONENTS_ROOT = os.path.join(BASE_DIR, "components").replace("\\", "/")
+BOWER_INSTALLED_APPS = []
+with open(os.path.join(BASE_DIR, "requirements/static.txt").replace("\\", "/")) as f:  # read requirements from file
+    BOWER_INSTALLED_APPS += map(rstrip, f.readlines())
+
+# compressor settings
+COMPRESS_ENABLED = False
+COMPRESS_OFFLINE = False

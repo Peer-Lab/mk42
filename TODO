@@ -1,8 +1,5 @@
 # mk42
 # TODO
 
- - add django bower
  - add project version to footer
  - add copyright to footer
- - add django compressor
- - add some frontend libs (html5shiv, respond, jquery, bootstrap, font-awesome)

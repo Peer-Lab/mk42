@@ -7,13 +7,25 @@ create-virtualenv:
 pip-install:
 	pip install -r requirements/dev.txt
 
-messages: makemessages compilemessages
+install-node:
+	cd tmp && curl http://nodejs.org/dist/node-latest.tar.gz | tar xvz && cd node-v* && ./configure --prefix=$(VIRTUAL_ENV) && make install && cd .. && rm -rf node-v*
+
+install-bower:
+	npm install -g bower
+
+bower-install:
+	./manage.py bower install --settings=$(shell basename $(CURDIR)).settings.dev --traceback
+
+bower-update:
+	./manage.py bower update --settings=$(shell basename $(CURDIR)).settings.dev --traceback
 
 makemessages:
 	../dev-scp/messages.sh
 
 compilemessages:
 	../dev-scp/messages.sh compilemessages
+
+messages: makemessages compilemessages
 
 runserver:
 	./manage.py runserver 0.0.0.0:8080 --settings=$(shell basename $(CURDIR)).settings.dev --traceback
@@ -31,6 +43,9 @@ static: collectstatic
 
 collectstatic:
 	./manage.py collectstatic --settings=$(shell basename $(CURDIR)).settings.dev --traceback --noinput
+
+compress:
+	./manage.py compress --settings=$(shell basename $(CURDIR)).settings.dev --traceback -f
 
 shell:
 	./manage.py shell --settings=$(shell basename $(CURDIR)).settings.dev --traceback

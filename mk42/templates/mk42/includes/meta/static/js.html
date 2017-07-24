@@ -2,3 +2,21 @@
 {# mk42/templates/mk42/includes/meta/static/js.html #}
 
 {% load static %}
+
+{% load compress %}
+
+{# HTML5 shiv and Respond.js IE8 support of HTML5 elements and media queries #}
+<!--[if lt IE 9]>
+    {% compress js %}
+        <script type="text/javascript" src="{% static "html5shiv/dist/html5shiv.js" %}"></script>
+        <script type="text/javascript" src="{% static "respond/dest/respond.src.js" %}"></script>
+    {% endcompress %}
+<![endif]-->
+
+{% compress js %}
+    {# js libs #}
+    <script type="text/javascript" src="{% static "jquery/dist/jquery.js" %}"></script>
+    <script type="text/javascript" src="{% static "bootstrap/dist/js/bootstrap.js" %}"></script>
+    {# common project js #}
+    {# apps #}
+{% endcompress %}
