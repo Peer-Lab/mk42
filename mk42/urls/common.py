@@ -12,6 +12,7 @@ from django.conf.urls.i18n import i18n_patterns
 from django.views.i18n import javascript_catalog
 
 from rest_framework.authtoken.views import obtain_auth_token
+from django_js_reverse.views import urls_js
 
 from mk42.views.base import Index
 
@@ -29,6 +30,7 @@ urlpatterns += [
     url(r"^robots\.txt", include("robots.urls")),
     url(r"^redactor/", include("redactor.urls")),
     url(r"^get-api-token/", obtain_auth_token, name="get-api-token"),
+    url(r"^reverse\.js$", urls_js, name="js-reverse"),
 ]
 
 # third part apps i18n urls patterns

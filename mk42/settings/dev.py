@@ -52,3 +52,5 @@ DEBUG_TOOLBAR_PANELS = [
     "debug_toolbar.panels.redirects.RedirectsPanel",
 ]
 
+# js reverse settings
+JS_REVERSE_EXCLUDE_NAMESPACES += ["djdt", ]

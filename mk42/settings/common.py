@@ -97,7 +97,7 @@ INSTALLED_APPS = [
     "constance",
     "constance.backends.database",
     "watson",
-    "sitemetrics",
+    "django_js_reverse",
     # mk42 libs
     # mk42
     "mk42.apps.users",
@@ -309,3 +309,6 @@ SESSION_REDIS_SOCKET_TIMEOUT = 1
 
 # google maps api key
 GOOGLE_MAPS_API_KEY = env("GOOGLE_MAPS_API_KEY")
+
+# js reverse settings
+JS_REVERSE_EXCLUDE_NAMESPACES = ["admin", ]
