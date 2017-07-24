@@ -4,6 +4,8 @@
 {% load i18n %}
 {% load static %}
 
+{% load sitemetrics %}
+
 <!DOCTYPE html>
 <html lang="{{ LANGUAGE_CODE }}">
     <head>
@@ -35,5 +37,7 @@
         {% block js %}
             {% include "mk42/includes/meta/static/js.html" %}
         {% endblock %}
+        {# tracking codes #}
+        {% sitemetrics %}
     </body>
 </html>

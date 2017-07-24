@@ -97,6 +97,7 @@ INSTALLED_APPS = [
     "constance",
     "constance.backends.database",
     "watson",
+    "sitemetrics",
     # mk42 libs
     # mk42
     "mk42.apps.users",
