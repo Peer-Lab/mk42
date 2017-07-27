@@ -32,6 +32,7 @@ class Event(models.Model):
     group = models.ForeignKey("core.Group", verbose_name=_("group"), db_index=True, related_name="events")
     address = models.CharField(verbose_name=_("address"), max_length=2048, blank=False, null=True, db_index=True)
     start = models.DateTimeField(verbose_name=_("start date/time"), blank=False, null=True, db_index=True)
+    end = models.DateTimeField(verbose_name=_("end date/time"), blank=False, null=True, db_index=True)
     created = models.DateTimeField(verbose_name=_("created date/time"), blank=True, null=True, db_index=True, auto_now_add=True)
     updated = models.DateTimeField(verbose_name=_("start date/time"), blank=True, null=True, db_index=True, auto_now=True)
 
