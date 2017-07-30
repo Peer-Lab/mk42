@@ -19,13 +19,13 @@ from mk42.constants import (
 
 
 __all__ = [
-    "EventStatusLog",
+    "EventLog",
 ]
 
 
-class EventStatusLog(models.Model):
+class EventLog(models.Model):
     """
-    EventStatusLog model.
+    EventLog model.
     """
 
     Status = (
@@ -37,7 +37,7 @@ class EventStatusLog(models.Model):
 
 
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False, verbose_name=_("ID"))
-    event = models.ForeignKey("core.Event",  verbose_name=_("event"), db_index=True, related_name="event status log")
+    event = models.ForeignKey("core.Event",  verbose_name=_("event"), db_index=True, related_name="eventlogs")
     status = models.IntegerField(choices=Status, default=PENDING)
     created = models.DateTimeField(verbose_name=_("created date/time"), blank=True, null=True, db_index=True, auto_now_add=True)
 
@@ -45,8 +45,8 @@ class EventStatusLog(models.Model):
     class Meta:
 
         app_label = "core"
-        verbose_name = _("event status log")
-        verbose_name_plural = _("event status logs")
+        verbose_name = _("event log")
+        verbose_name_plural = _("event logs")
         ordering = ["-created", ]
 
     def __unicode__(self):
