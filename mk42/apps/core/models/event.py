@@ -14,6 +14,7 @@ from django.conf import settings
 
 from redactor.fields import RedactorField
 
+from mk42.apps.core.models.event_log import EventLog
 
 
 __all__ = [
@@ -35,6 +36,17 @@ class Event(models.Model):
     end = models.DateTimeField(verbose_name=_("end date/time"), blank=False, null=True, db_index=True)
     created = models.DateTimeField(verbose_name=_("created date/time"), blank=True, null=True, db_index=True, auto_now_add=True)
     updated = models.DateTimeField(verbose_name=_("start date/time"), blank=True, null=True, db_index=True, auto_now=True)
+
+
+
+    @property
+    def get_status(self):
+        return
+
+
+    @property
+    def get_human_status(self):
+        return 
 
 
     class Meta:

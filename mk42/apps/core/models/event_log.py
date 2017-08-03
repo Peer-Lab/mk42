@@ -29,10 +29,10 @@ class EventLog(models.Model):
     """
 
     Status = (
-        (PENDING, 'Pending'),
-        (CANCELLED, 'Canceled'),
-        (ONGOING, 'Ongoing'),
-        (FINISHED, 'Finished'),
+        (PENDING, _("Pending")),
+        (CANCELLED, _("Canceled")),
+        (ONGOING, _("Ongoing")),
+        (FINISHED, _("Finished")),
     )
 
 
