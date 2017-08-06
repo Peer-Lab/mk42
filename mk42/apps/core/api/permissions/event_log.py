@@ -17,6 +17,8 @@ from mk42.constants import (
     PATCH,
 )
 
+from mk42.apps.core.models.event import Event
+
 
 __all__ = [
     "EventLogPermissions",
@@ -27,6 +29,21 @@ class EventLogPermissions(BasePermission):
     """
     EventLog permissions.
     """
+
+    def check_event_owner(self, request):
+    	"""
+		Check if user that sends request is event owner.
+
+		:param requeset: django request instance.
+		:type request: django.http.request.HttpRequest.
+		:return: user is owner.
+		:rtype: bool.
+
+    	"""
+    	event_id = request.POST["event"]
+    	event = Event.object.get(id=event_id)
+    	if event.owner == request.user:
+    		return True
 
     def has_permission(self, request, view):
         """
@@ -44,7 +61,7 @@ class EventLogPermissions(BasePermission):
             # Read permissions are allowed to any request, so we'll always allow GET, HEAD or OPTIONS requests.
             return True
 
-        if all([request.method == POST, is_authenticated(request.user), ]):
+        if all([request.method == POST, is_authenticated(request.user), self.check_event_owner(request)]):
             # Allow add new status only for authenticated users.
             return True
 
@@ -66,9 +83,6 @@ class EventLogPermissions(BasePermission):
         :rtype: bool.
         """
 
-        if all([request.method == POST, obj.event.group.owner == request.user, ]):
-            # Allow only group owner add objects.
-            return True
 
         if request.method == DELETE:
             # Disallow delete events by anyone.
