@@ -5,6 +5,7 @@
 
 from __future__ import unicode_literals
 
+from django.utils.translation import ugettext_lazy as _
 from rest_framework import serializers
 
 from mk42.apps.core.models.event import Event
@@ -20,10 +21,13 @@ class EventSerializer(serializers.ModelSerializer):
     Event serializer.
     """
 
+    status = serializers.ReadOnlyField(label=_("status"))
+
     class Meta:
 
         model = Event
         read_only_fields = [
+            "status",
             "created", 
             "updated",
         ]
@@ -36,6 +40,7 @@ class EventSerializer(serializers.ModelSerializer):
             "description",
             "group",
             "address",
+            "status",
             "start",
             "end",
             "created",
