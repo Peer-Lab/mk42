@@ -10,11 +10,20 @@ import uuid
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.conf import settings
-
+from django.db.models.signals import post_save
 
 from redactor.fields import RedactorField
 
-from mk42.apps.core.models.event_log import EventLog
+from mk42.apps.core.models.log import EventLog
+from mk42.apps.core.constants import (
+    LOG_STATUS_CHOICES, 
+    LOG_STATUS_PENDING, 
+    LOG_STATUS_CANCELLED, 
+    LOG_STATUS_ONGOING, 
+    LOG_STATUS_FINISHED,
+)
+
+from mk42.apps.core.signals.event import post_save_event
 
 
 __all__ = [
@@ -26,6 +35,9 @@ class Event(models.Model):
     """
     Event model.
     """
+
+    STATUS_PENDING, STATUS_CANCELLED, STATUS_ONGOING, STATUS_FINISHED = LOG_STATUS_PENDING, LOG_STATUS_CANCELLED, LOG_STATUS_ONGOING, LOG_STATUS_FINISHED
+    STATUS_CHOICES = LOG_STATUS_CHOICES
 
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False, verbose_name=_("ID"))
     name = models.CharField(verbose_name=_("name"), max_length=256, db_index=True, unique=True)
@@ -40,13 +52,29 @@ class Event(models.Model):
 
 
     @property
-    def get_status(self):
-        return
+    def status(self):
+        """
+        Return event status.
+
+        :return: event status.
+        :rtype: int.
+        """
+
+        return self.logs.first().status if self.logs.first() else self.STATUS_PENDING
 
 
     @property
-    def get_human_status(self):
-        return 
+    def human_readable_status(self):
+        """
+        Return event status name.
+
+        :return: event status name.
+        :rtype: str.
+        """
+
+        status = self.logs.first()
+
+        return status.get_status_value()
 
 
     class Meta:
@@ -55,7 +83,7 @@ class Event(models.Model):
         app_label = "core"
         verbose_name = _("event")
         verbose_name_plural = _("events")
-        ordering = ["-created", "-start"]
+        ordering = ["-start"]
 
     def __unicode__(self):
 
@@ -64,3 +92,8 @@ class Event(models.Model):
     def __str__(self):
 
         return self.__unicode__()
+
+# register signals
+post_save.connect(post_save_event, sender=Event)
+
+

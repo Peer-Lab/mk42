@@ -11,13 +11,13 @@ from mk42.apps.core.models.group import Group
 from mk42.apps.core.models.membership import Membership
 from mk42.apps.core.models.event import Event
 from mk42.apps.core.models.rsvp import RSVP
-from mk42.apps.core.models.event_log import EventLog
+from mk42.apps.core.models.log import EventLog
 
 from mk42.apps.core.admin.group import GroupAdmin
 from mk42.apps.core.admin.membership import MembershipAdmin
 from mk42.apps.core.admin.event import EventAdmin
 from mk42.apps.core.admin.rsvp import RSVPAdmin
-from mk42.apps.core.admin.event_log import EventLogAdmin
+from mk42.apps.core.admin.log import EventLogAdmin
 
 
 

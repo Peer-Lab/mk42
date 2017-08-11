@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 
 # mk42
-# mk42/apps/core/api/serializers/event_log.py
+# mk42/apps/core/api/serializers/log.py
 
 from __future__ import unicode_literals
 
 from rest_framework import serializers
 
-from mk42.apps.core.models.event_log import EventLog
+from mk42.apps.core.models.log import EventLog
 
 
 __all__ = [

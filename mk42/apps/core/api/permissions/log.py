@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 # mk42
-# mk42/apps/core/api/permissions/event_log.py
+# mk42/apps/core/api/permissions/log.py
 
 from __future__ import unicode_literals
 
@@ -10,6 +10,7 @@ from rest_framework.permissions import (
     SAFE_METHODS,
 )
 from rest_framework.compat import is_authenticated
+from annoying.functions import get_object_or_None
 
 from mk42.constants import (
     POST,
@@ -40,10 +41,11 @@ class EventLogPermissions(BasePermission):
 		:rtype: bool.
 
     	"""
-    	event_id = request.POST["event"]
-    	event = Event.object.get(id=event_id)
-    	if event.owner == request.user:
-    		return True
+
+    	event_id = request.POST.get("event")
+    	event = get_object_or_None(Event, pk=event_id)
+    	
+    	return event and event.owner == request.user
 
     def has_permission(self, request, view):
         """
@@ -82,7 +84,6 @@ class EventLogPermissions(BasePermission):
         :return: permission is granted.
         :rtype: bool.
         """
-
 
         if request.method == DELETE:
             # Disallow delete events by anyone.

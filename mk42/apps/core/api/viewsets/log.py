@@ -11,8 +11,8 @@ from rest_framework.filters import OrderingFilter
 from django_filters.rest_framework import DjangoFilterBackend
 
 from mk42.apps.core.models.event import Event
-from mk42.apps.core.api.serializers.event_log import EventLogSerializer
-from mk42.apps.core.api.permissions.event_log import EventLogPermissions
+from mk42.apps.core.api.serializers.log import EventLogSerializer
+from mk42.apps.core.api.permissions.log import EventLogPermissions
 from mk42.lib.utils.pagination import ExtendedPageNumberPagination
 
 

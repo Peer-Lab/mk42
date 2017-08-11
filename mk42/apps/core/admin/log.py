@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 # mk42
-# mk42/apps/core/admin/event_log.py
+# mk42/apps/core/admin/log.py
 
 from __future__ import unicode_literals
 
