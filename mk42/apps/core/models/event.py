@@ -74,7 +74,7 @@ class Event(models.Model):
 
         status = self.logs.first()
 
-        return status.get_status_value()
+        return status.get_status_display()
 
 
     class Meta:
