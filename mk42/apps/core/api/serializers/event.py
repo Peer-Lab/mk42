@@ -21,6 +21,9 @@ class EventSerializer(serializers.ModelSerializer):
     Event serializer.
     """
 
+    # end and address aren't recognized as required from base on some unknown reason, so we need to set it here. 
+    address = serializers.CharField(required=True)
+    end = serializers.DateTimeField(required=True)
     status = serializers.ReadOnlyField(label=_("status"))
 
     class Meta:

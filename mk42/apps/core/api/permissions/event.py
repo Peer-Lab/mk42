@@ -5,6 +5,8 @@
 
 from __future__ import unicode_literals
 
+from datetime import datetime
+
 from rest_framework.permissions import (
     BasePermission,
     SAFE_METHODS,
@@ -15,6 +17,7 @@ from mk42.constants import (
     POST,
     DELETE,
     PATCH,
+    DATETIME_FORMAT,
 )
 
 
@@ -27,6 +30,23 @@ class EventPermissions(BasePermission):
     """
     Event permissions.
     """
+
+
+    def check_event_dates(self, request):
+        """
+        Check if new event end is later then start.
+
+        This validation is implemented here 'cause model validation can't work with multiple fields.
+
+        :param requeset: django request instance.
+        :type request: django.http.request.HttpRequest.
+        :return: is event dates validated?
+        :rtype: bool.
+        """
+        start = datetime.strptime(request.data.get("start"), DATETIME_FORMAT)
+        end = datetime.strptime(request.data.get("end"), DATETIME_FORMAT)
+        
+        return start < end
 
     def has_permission(self, request, view):
         """
@@ -44,7 +64,7 @@ class EventPermissions(BasePermission):
             # Read permissions are allowed to any request, so we'll always allow GET, HEAD or OPTIONS requests.
             return True
 
-        if all([request.method == POST, is_authenticated(request.user), ]):
+        if all([request.method == POST, is_authenticated(request.user), ]) and self.check_event_dates(request):
             # Allow create events only for authenticated users.
             return True
 
