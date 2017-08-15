@@ -7,6 +7,8 @@ from __future__ import unicode_literals
 
 from datetime import datetime
 
+from django.utils.translation import ugettext_lazy as _
+
 from rest_framework.permissions import (
     BasePermission,
     SAFE_METHODS,
@@ -43,6 +45,7 @@ class EventPermissions(BasePermission):
         :return: is event dates validated?
         :rtype: bool.
         """
+
         start = datetime.strptime(request.data.get("start"), DATETIME_FORMAT)
         end = datetime.strptime(request.data.get("end"), DATETIME_FORMAT)
         
@@ -64,8 +67,12 @@ class EventPermissions(BasePermission):
             # Read permissions are allowed to any request, so we'll always allow GET, HEAD or OPTIONS requests.
             return True
 
-        if all([request.method == POST, is_authenticated(request.user), ]) and self.check_event_dates(request):
+        # TODO: need to implement custom message and to divide permission and validation checks    
+        if all([request.method == POST, is_authenticated(request.user), ]):
             # Allow create events only for authenticated users.
+            if self.check_event_dates(request) == False:
+                self.message = _("Invalid dates.")
+                return False
             return True
 
         if request.method == PATCH:

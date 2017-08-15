@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mk42\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-24 22:36+0000\n"
+"POT-Creation-Date: 2017-08-15 15:34+0000\n"
 "PO-Revision-Date: 2017-06-13 19:25+0000\n"
 "Last-Translator: Alexei Andrushievich <vint21h@vint21h.pp.ua>\n"
 "Language-Team: Alexei Andrushievich <vint21h@vint21h.pp.ua>\n"
@@ -17,7 +17,8 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: admin/event.py:29 admin/group.py:31 admin/membership.py:29 admin/rsvp.py:28
+#: admin/event.py:29 admin/group.py:31 admin/log.py:28 admin/membership.py:29
+#: admin/rsvp.py:28
 msgid "Other"
 msgstr ""
 
@@ -37,45 +38,73 @@ msgstr ""
 msgid "Deactivate selected memberships"
 msgstr ""
 
+#: api/permissions/event.py:74
+msgid "Invalid dates."
+msgstr ""
+
+#: api/serializers/event.py:27
+msgid "status"
+msgstr ""
+
 #: apps.py:23
 msgid "Core"
 msgstr ""
 
-#: models/event.py:29 models/group.py:31 models/membership.py:25
-#: models/rsvp.py:24
+#: constants.py:22
+msgid "Pending"
+msgstr ""
+
+#: constants.py:23
+msgid "Canceled"
+msgstr ""
+
+#: constants.py:24
+msgid "Ongoing"
+msgstr ""
+
+#: constants.py:25
+msgid "Finished"
+msgstr ""
+
+#: models/event.py:43 models/group.py:31 models/log.py:35
+#: models/membership.py:25 models/rsvp.py:24
 msgid "ID"
 msgstr ""
 
-#: models/event.py:30 models/group.py:32
+#: models/event.py:44 models/group.py:32
 msgid "name"
 msgstr ""
 
-#: models/event.py:31 models/group.py:35
+#: models/event.py:45 models/group.py:35
 msgid "description"
 msgstr ""
 
-#: models/event.py:32 models/group.py:45 models/membership.py:27
+#: models/event.py:46 models/group.py:45 models/membership.py:27
 msgid "group"
 msgstr ""
 
-#: models/event.py:33
+#: models/event.py:47
 msgid "address"
 msgstr ""
 
-#: models/event.py:34 models/event.py:36
+#: models/event.py:48 models/event.py:51
 msgid "start date/time"
 msgstr ""
 
-#: models/event.py:35 models/group.py:36 models/membership.py:28
-#: models/rsvp.py:27
+#: models/event.py:49
+msgid "end date/time"
+msgstr ""
+
+#: models/event.py:50 models/group.py:36 models/log.py:38
+#: models/membership.py:28 models/rsvp.py:27
 msgid "created date/time"
 msgstr ""
 
-#: models/event.py:43 models/rsvp.py:26
+#: models/event.py:83 models/log.py:36 models/rsvp.py:26
 msgid "event"
 msgstr ""
 
-#: models/event.py:44
+#: models/event.py:84
 msgid "events"
 msgstr ""
 
@@ -101,6 +130,14 @@ msgstr ""
 
 #: models/group.py:46
 msgid "groups"
+msgstr ""
+
+#: models/log.py:44
+msgid "event log"
+msgstr ""
+
+#: models/log.py:45
+msgid "event logs"
 msgstr ""
 
 #: models/membership.py:26 models/rsvp.py:25
@@ -152,4 +189,12 @@ msgstr ""
 #: templates/templated_email/create_group_email.email:18
 #: templates/templated_email/create_group_email.email:38
 msgid "team"
+msgstr ""
+
+#: validators/event.py:29
+msgid "Start of new event can't be in the past"
+msgstr ""
+
+#: validators/event.py:42
+msgid "End of new event can't be in the past"
 msgstr ""
