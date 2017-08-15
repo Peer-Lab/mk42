@@ -66,13 +66,14 @@ class EventPermissions(BasePermission):
         if request.method in SAFE_METHODS:
             # Read permissions are allowed to any request, so we'll always allow GET, HEAD or OPTIONS requests.
             return True
-
-        # TODO: need to implement custom message and to divide permission and validation checks    
+  
         if all([request.method == POST, is_authenticated(request.user), ]):
             # Allow create events only for authenticated users.
             if self.check_event_dates(request) == False:
                 self.message = _("Invalid dates.")
+
                 return False
+                
             return True
 
         if request.method == PATCH:
