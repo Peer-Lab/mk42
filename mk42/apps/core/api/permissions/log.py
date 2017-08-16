@@ -32,20 +32,20 @@ class EventLogPermissions(BasePermission):
     """
 
     def check_event_owner(self, request):
-    	"""
-		Check if user that sends request is event owner.
+        """
+        Check if user that sends request is event owner.
 
-		:param requeset: django request instance.
-		:type request: django.http.request.HttpRequest.
-		:return: user is owner.
-		:rtype: bool.
+        :param requeset: django request instance.
+        :type request: django.http.request.HttpRequest.
+        :return: user is owner.
+        :rtype: bool.
 
-    	"""
+        """
 
-    	event_id = request.data.get("event")
-    	event = get_object_or_None(Event, pk=event_id)
-    	
-    	return event and event.owner == request.user
+        event_id = request.data.get("event")
+        event = get_object_or_None(Event, pk=event_id)
+        
+        return event and event.owner == request.user
 
     def has_permission(self, request, view):
         """
