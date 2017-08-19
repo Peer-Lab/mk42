@@ -69,7 +69,7 @@ class EventPermissions(BasePermission):
   
         if all([request.method == POST, is_authenticated(request.user), ]):
             # Allow create events only for authenticated users.
-            if self.check_event_dates(request) == False:
+            if not self.check_event_dates(request):
                 self.message = _("Invalid dates.")
 
                 return False

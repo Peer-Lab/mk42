@@ -42,8 +42,7 @@ class EventLogPermissions(BasePermission):
 
         """
 
-        event_id = request.data.get("event")
-        event = get_object_or_None(Event, pk=event_id)
+        event = get_object_or_None(Event, pk=request.data.get("event"))
         
         return event and event.owner == request.user
 
