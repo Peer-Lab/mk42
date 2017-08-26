@@ -323,12 +323,6 @@ GOOGLE_MAPS_API_KEY = env("GOOGLE_MAPS_API_KEY")
 # js reverse settings
 JS_REVERSE_EXCLUDE_NAMESPACES = ["admin", ]
 
-# bower settings
-BOWER_COMPONENTS_ROOT = os.path.join(BASE_DIR, "components").replace("\\", "/")
-BOWER_INSTALLED_APPS = []
-with open(os.path.join(BASE_DIR, "requirements/static.txt").replace("\\", "/")) as f:  # read requirements from file
-    BOWER_INSTALLED_APPS += map(rstrip, f.readlines())
-
 # compressor settings
 COMPRESS_ENABLED = False
 COMPRESS_OFFLINE = False
