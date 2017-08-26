@@ -20,6 +20,8 @@ class GroupSerializer(serializers.ModelSerializer):
     Group serializer.
     """
 
+    owner = serializers.UUIDField(required=False)
+
     class Meta:
 
         model = Group

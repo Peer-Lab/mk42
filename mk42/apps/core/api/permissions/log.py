@@ -1,55 +1,50 @@
 # -*- coding: utf-8 -*-
 
 # mk42
-# mk42/apps/core/api/permissions/event.py
+# mk42/apps/core/api/permissions/log.py
 
 from __future__ import unicode_literals
-
-from datetime import datetime
-
-from django.utils.translation import ugettext_lazy as _
 
 from rest_framework.permissions import (
     BasePermission,
     SAFE_METHODS,
 )
 from rest_framework.compat import is_authenticated
+from annoying.functions import get_object_or_None
 
 from mk42.constants import (
     POST,
     DELETE,
     PATCH,
-    DATETIME_FORMAT,
 )
+
+from mk42.apps.core.models.event import Event
 
 
 __all__ = [
-    "EventPermissions",
+    "EventLogPermissions",
 ]
 
 
-class EventPermissions(BasePermission):
+class EventLogPermissions(BasePermission):
     """
-    Event permissions.
+    EventLog permissions.
     """
 
-
-    def check_event_dates(self, request):
+    def check_event_owner(self, request):
         """
-        Check if new event end is later then start.
-
-        This validation is implemented here 'cause model validation can't work with multiple fields.
+        Check if user that sends request is event owner.
 
         :param requeset: django request instance.
         :type request: django.http.request.HttpRequest.
-        :return: is event dates validated?
+        :return: user is owner.
         :rtype: bool.
+
         """
 
-        start = datetime.strptime(request.data.get("start"), DATETIME_FORMAT)
-        end = datetime.strptime(request.data.get("end"), DATETIME_FORMAT)
+        event = get_object_or_None(Event, pk=request.data.get("event"))
         
-        return start < end
+        return event and event.owner == request.user
 
     def has_permission(self, request, view):
         """
@@ -58,7 +53,7 @@ class EventPermissions(BasePermission):
         :param request: django request instance.
         :type request: django.http.request.HttpRequest.
         :param view: view set.
-        :type view: mk42.apps.core.api.viewsets.event.EventViewset.
+        :type view: mk42.apps.core.api.viewsets.event_log.EventLogViewset.
         :return: permission is granted.
         :rtype: bool.
         """
@@ -66,19 +61,14 @@ class EventPermissions(BasePermission):
         if request.method in SAFE_METHODS:
             # Read permissions are allowed to any request, so we'll always allow GET, HEAD or OPTIONS requests.
             return True
-  
-        if all([request.method == POST, is_authenticated(request.user), ]):
-            # Allow create events only for authenticated users.
-            if not self.check_event_dates(request):
-                self.message = _("Invalid dates.")
 
-                return False
-                
+        if all([request.method == POST, is_authenticated(request.user), self.check_event_owner(request)]):
+            # Allow add new status only for authenticated users.
             return True
 
         if request.method == PATCH:
             # In futures steps of flow allow user edit self owned events.
-            return True
+            return False
 
     def has_object_permission(self, request, view, obj):
         """
@@ -87,16 +77,12 @@ class EventPermissions(BasePermission):
         :param request: django request instance.
         :type request: django.http.request.HttpRequest.
         :param view: view set.
-        :type view: mk42.apps.core.api.viewsets.event.EventViewset.
-        :param obj: event model instance.
-        :type obj: mk42.apps.core.models.event.Event.
+        :type view: mk42.apps.core.api.viewsets.event_log.EventLogViewset.
+        :param obj: event_log model instance.
+        :type obj: mk42.apps.core.models.event_log.EventLog.
         :return: permission is granted.
         :rtype: bool.
         """
-
-        if obj.group.owner == request.user:
-            # Allow only group owner edit objects.
-            return True
 
         if request.method == DELETE:
             # Disallow delete events by anyone.
