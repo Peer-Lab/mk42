@@ -4,6 +4,9 @@
 create-virtualenv:
 	virtualenv .env/`arch`
 
+install-node:
+	cd tmp && curl http://nodejs.org/dist/node-latest.tar.gz | tar xvz && cd node-v* && ./configure --prefix=$(VIRTUAL_ENV) && make install && cd .. && rm -rf node-v*
+
 pip-install:
 	pip install -r requirements/dev.txt
 
