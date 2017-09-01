@@ -100,7 +100,6 @@ INSTALLED_APPS = [
     "constance.backends.database",
     "watson",
     "django_js_reverse",
-    "djangobower",
     "compressor",
     # mk42 libs
     # mk42
@@ -196,7 +195,6 @@ STATICFILES_FINDERS = (
     "django.contrib.staticfiles.finders.AppDirectoriesFinder",
     # third part
     "compressor.finders.CompressorFinder",
-    "djangobower.finders.BowerFinder",
 )
 STATIC_URL = "/static/"
 MEDIA_URL = "/media/"
