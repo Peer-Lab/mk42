@@ -73,7 +73,7 @@ class GroupViewSet(ModelViewSet):
         :rtype: rest_framework.response.Response.
         """
 
-        queryset = self.filter_queryset(queryset=Group.objects.filter(owner=request.user))
+        queryset=self.filter_queryset(queryset=Group.objects.filter(owner=request.user).all() if request.user.is_authenticated else Group.objects.none())
         page = self.paginate_queryset(queryset)
 
         if page is not None:
@@ -148,7 +148,7 @@ class GroupViewSet(ModelViewSet):
         :rtype: rest_framework.response.Response.
         """
 
-        queryset = self.filter_queryset(queryset=Group.objects.filter(owner=request.user).active())
+        queryset = self.filter_queryset(queryset=Group.objects.filter(owner=request.user).active() if request.user.is_authenticated else Group.objects.none())
         page = self.paginate_queryset(queryset)
 
         if page is not None:
@@ -173,7 +173,7 @@ class GroupViewSet(ModelViewSet):
         :rtype: rest_framework.response.Response.
         """
 
-        queryset = self.filter_queryset(queryset=Group.objects.filter(owner=request.user).inactive())
+        queryset = self.filter_queryset(queryset=Group.objects.filter(owner=request.user).inactive() if request.user.is_authenticated else Group.objects.none())
         page = self.paginate_queryset(queryset)
 
         if page is not None:
