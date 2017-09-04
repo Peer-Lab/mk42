@@ -73,7 +73,7 @@ class GroupViewSet(ModelViewSet):
         :rtype: rest_framework.response.Response.
         """
 
-        queryset=self.filter_queryset(queryset=Group.objects.filter(owner=request.user).all() if request.user.is_authenticated else Group.objects.none())
+        queryset = self.filter_queryset(queryset=Group.objects.filter(owner=request.user).all() if request.user.is_authenticated else Group.objects.none())
         page = self.paginate_queryset(queryset)
 
         if page is not None:
