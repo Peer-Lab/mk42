@@ -66,7 +66,7 @@ class RSVPViewSet(ModelViewSet):
         :rtype: rest_framework.response.Response.
         """
 
-        queryset = self.filter_queryset(queryset=RSVP.objects.filter(user=request.user))
+        queryset = self.filter_queryset(queryset=request.user.rsvp.all() if request.user.is_authenticated else RSVP.objects.none())
         page = self.paginate_queryset(queryset)
 
         if page is not None:
