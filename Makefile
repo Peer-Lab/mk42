@@ -4,20 +4,11 @@
 create-virtualenv:
 	virtualenv .env/`arch`
 
-pip-install:
-	pip install -r requirements/dev.txt
-
 install-node:
 	cd tmp && curl http://nodejs.org/dist/node-latest.tar.gz | tar xvz && cd node-v* && ./configure --prefix=$(VIRTUAL_ENV) && make install && cd .. && rm -rf node-v*
 
-install-bower:
-	npm install -g bower
-
-bower-install:
-	./manage.py bower install --settings=$(shell basename $(CURDIR)).settings.dev --traceback
-
-bower-update:
-	./manage.py bower update --settings=$(shell basename $(CURDIR)).settings.dev --traceback
+pip-install:
+	pip install -r requirements/dev.txt
 
 makemessages:
 	../dev-scp/messages.sh

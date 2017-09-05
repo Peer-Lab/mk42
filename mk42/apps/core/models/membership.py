@@ -47,3 +47,21 @@ class Membership(models.Model):
     def __str__(self):
 
         return self.__unicode__()
+
+    def save(self, *args, **kwargs):
+        """
+        PPC
+        :param args:
+        :type args:
+        :param kwargs:
+        :type kwargs:
+        :return:
+        :rtype:
+        """
+
+        if self.pk:
+            old = Membership.objects.get(pk=self.pk)
+            if all([self.active, self.active != old.active, ]):
+                self.send_membership_approve_email()
+
+        super(Membership, self).save(*args, **kwargs)

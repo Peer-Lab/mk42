@@ -100,7 +100,6 @@ INSTALLED_APPS = [
     "constance.backends.database",
     "watson",
     "django_js_reverse",
-    "djangobower",
     "compressor",
     # mk42 libs
     # mk42
@@ -196,7 +195,6 @@ STATICFILES_FINDERS = (
     "django.contrib.staticfiles.finders.AppDirectoriesFinder",
     # third part
     "compressor.finders.CompressorFinder",
-    "djangobower.finders.BowerFinder",
 )
 STATIC_URL = "/static/"
 MEDIA_URL = "/media/"
@@ -322,12 +320,6 @@ GOOGLE_MAPS_API_KEY = env("GOOGLE_MAPS_API_KEY")
 
 # js reverse settings
 JS_REVERSE_EXCLUDE_NAMESPACES = ["admin", ]
-
-# bower settings
-BOWER_COMPONENTS_ROOT = os.path.join(BASE_DIR, "components").replace("\\", "/")
-BOWER_INSTALLED_APPS = []
-with open(os.path.join(BASE_DIR, "requirements/static.txt").replace("\\", "/")) as f:  # read requirements from file
-    BOWER_INSTALLED_APPS += map(rstrip, f.readlines())
 
 # compressor settings
 COMPRESS_ENABLED = False

@@ -15,9 +15,9 @@ __all__ = [
 
 
 # project start date: 12.06.2017
-# project last update date: 05.08.2017
+# project last update date: 05.09.2017
 
 
 VERSION = (0, 0, 0)
 __version__ = ".".join(map(str, VERSION))
-__updated__ = date(2017, 8, 5)
+__updated__ = date(2017, 9, 5)
