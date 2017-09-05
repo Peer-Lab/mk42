@@ -68,7 +68,7 @@ class MembershipViewSet(ModelViewSet):
         :rtype: rest_framework.response.Response.
         """
 
-        queryset = self.filter_queryset(queryset=Membership.objects.filter(user=request.user))
+        queryset = self.filter_queryset(queryset=request.user.membership.all() if request.user.is_authenticated else Membership.objects.none())
         page = self.paginate_queryset(queryset)
 
         if page is not None:
@@ -143,7 +143,7 @@ class MembershipViewSet(ModelViewSet):
         :rtype: rest_framework.response.Response.
         """
 
-        queryset = self.filter_queryset(queryset=Membership.objects.filter(user=request.user).active())
+        queryset = self.filter_queryset(queryset=request.user.membership.active() if request.user.is_authenticated else Membership.objects.none())
         page = self.paginate_queryset(queryset)
 
         if page is not None:
@@ -168,7 +168,7 @@ class MembershipViewSet(ModelViewSet):
         :rtype: rest_framework.response.Response.
         """
 
-        queryset = self.filter_queryset(queryset=Membership.objects.filter(user=request.user).inactive())
+        queryset = self.filter_queryset(queryset=request.user.membership.inactive() if request.user.is_authenticated else Membership.objects.none())
         page = self.paginate_queryset(queryset)
 
         if page is not None:
