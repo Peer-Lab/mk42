@@ -168,7 +168,7 @@ class MembershipViewSet(ModelViewSet):
         :rtype: rest_framework.response.Response.
         """
 
-        queryset = self.filter_queryset(queryset=request.user.membership.inactive() if request.user.is_authenticated else Group.objects.none())
+        queryset = self.filter_queryset(queryset=request.user.membership.inactive() if request.user.is_authenticated else Membership.objects.none())
         page = self.paginate_queryset(queryset)
 
         if page is not None:
