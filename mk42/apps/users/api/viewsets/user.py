@@ -14,6 +14,7 @@ from rest_framework.filters import (
     OrderingFilter,
 )
 from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework.response import Response
 
 from mk42.apps.users.models.user import User
 from mk42.apps.users.api.serializers.user import UserSerializer
@@ -60,3 +61,19 @@ class UserViewSet(ModelViewSet):
         }
 
         serializer.save(**defaults)
+
+    def me(self, request, **kwargs):
+        """
+        Mark message as read.
+
+        :param request: django request instance.
+        :type request: django.http.request.HttpRequest.
+        :param kwargs: additional args.
+        :type kwargs: dict.
+        :return: django rest framework response.
+        :rtype: rest_framework.response.Response.
+        """
+
+        serializer = self.get_serializer(request.user if request.user.is_authenticated else None, many=False)
+
+        return Response(serializer.data)
