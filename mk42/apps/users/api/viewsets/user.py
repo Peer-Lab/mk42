@@ -64,7 +64,7 @@ class UserViewSet(ModelViewSet):
 
     def me(self, request, **kwargs):
         """
-        Mark message as read.
+        Return current serialized user model instance.
 
         :param request: django request instance.
         :type request: django.http.request.HttpRequest.
