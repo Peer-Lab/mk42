@@ -130,7 +130,7 @@ class MembershipViewSet(ModelViewSet):
 
         return Response(serializer.data)
 
-    @list_route(methods=[GET, ])
+    @list_route(methods=[GET, ], url_path="my/active")
     def my__active(self, request, **kwargs):
         """
         Return only active user memberships.
@@ -155,7 +155,7 @@ class MembershipViewSet(ModelViewSet):
 
         return Response(serializer.data)
 
-    @list_route(methods=[GET, ])
+    @list_route(methods=[GET, ], url_path="my/inactive")
     def my__inactive(self, request, **kwargs):
         """
         Return only inactive user memberships.

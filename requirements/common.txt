@@ -43,4 +43,4 @@ django-admin-env-notice==0.1.4
 # from VCS
 
 # django
-Django==1.11.4
+Django==1.11.5
