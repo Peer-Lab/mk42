@@ -30,4 +30,3 @@ def post_save_event(sender, instance, created, **kwargs):
     if created:
         
         EventLog.objects.get_or_create(event=instance)
-

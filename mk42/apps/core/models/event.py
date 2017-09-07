@@ -50,32 +50,6 @@ class Event(models.Model):
     created = models.DateTimeField(verbose_name=_("created date/time"), blank=True, null=True, db_index=True, auto_now_add=True)
     updated = models.DateTimeField(verbose_name=_("start date/time"), blank=True, null=True, db_index=True, auto_now=True)
 
-
-
-    @property
-    def status(self):
-        """
-        Return event status.
-
-        :return: event status.
-        :rtype: int.
-        """
-
-        return self.logs.first().status if self.logs.first() else self.STATUS_PENDING
-
-
-    @property
-    def human_readable_status(self):
-        """
-        Return event status name.
-
-        :return: event status name.
-        :rtype: str.
-        """
-
-        return dict(self.STATUS_CHOICES).get(self.status, self.STATUS_PENDING)
-
-
     class Meta:
 
         unique_together = ["group", "start",]
@@ -92,7 +66,28 @@ class Event(models.Model):
 
         return self.__unicode__()
 
+    @property
+    def status(self):
+        """
+        Return event status.
+
+        :return: event status.
+        :rtype: int.
+        """
+
+        return self.logs.first().status if self.logs.first() else self.STATUS_PENDING
+
+    @property
+    def human_readable_status(self):
+        """
+        Return event status name.
+
+        :return: event status name.
+        :rtype: str.
+        """
+
+        return dict(self.STATUS_CHOICES).get(self.status, self.STATUS_PENDING)
+
+
 # register signals
 post_save.connect(post_save_event, sender=Event)
-
-

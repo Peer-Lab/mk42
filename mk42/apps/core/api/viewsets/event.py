@@ -25,7 +25,7 @@ class EventViewSet(ModelViewSet):
     Event view set.
     """
 
-    queryset = Event.objects.all() 
+    queryset = Event.objects.all()
     serializer_class = EventSerializer
     filter_backends = [
         DjangoFilterBackend,
@@ -35,5 +35,3 @@ class EventViewSet(ModelViewSet):
     permission_classes = [EventPermissions, ]
     filter_fields = ["group", ]
     ordering_fields = ["created", "start", ]
-
-
