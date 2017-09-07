@@ -5,8 +5,6 @@
 
 from __future__ import unicode_literals
 
-from mk42.apps.core.models.log import EventLog
-
 
 __all__ = [
     "post_save_event",
@@ -28,5 +26,5 @@ def post_save_event(sender, instance, created, **kwargs):
     """
 
     if created:
-        
-        EventLog.objects.get_or_create(event=instance)
+
+        instance.log_pending()
