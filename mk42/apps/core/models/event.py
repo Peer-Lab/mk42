@@ -91,13 +91,13 @@ class Event(models.Model):
 
     def log_pending(self, *args, **kwargs):
         """
-        Create event log with status == "mk42.apps.core.models.log.EventLog.STATUS_PENDING".
+        Create event log with status == "mk42.apps.core.constants.STATUS_PENDING".
 
         :param args: additional args.
         :type args: list.
         :param kwargs: additional args.
         :type kwargs: dict.
-        :return: event log model instance with status == "mk42.apps.core.models.log.EventLog.STATUS_PENDING".
+        :return: event log model instance with status == "mk42.apps.core.constants.STATUS_PENDING".
         :rtype: mk42.apps.core.models.log.EventLog.
         """
 
@@ -111,13 +111,13 @@ class Event(models.Model):
 
     def log_canceled(self, *args, **kwargs):
         """
-        Create event log with status == "mk42.apps.core.models.log.EventLog.STATUS_CANCELED".
+        Create event log with status == "mk42.apps.core.constants.STATUS_CANCELED".
 
         :param args: additional args.
         :type args: list.
         :param kwargs: additional args.
         :type kwargs: dict.
-        :return: event log model instance with status == "mk42.apps.core.models.log.EventLog.STATUS_CANCELED".
+        :return: event log model instance with status == "mk42.apps.core.constants.STATUS_CANCELED".
         :rtype: mk42.apps.core.models.log.EventLog.
         """
 
@@ -125,6 +125,9 @@ class Event(models.Model):
             "event": self,
             "status": self.STATUS_CANCELED,
         }
+        # can't create event logs with status == "mk42.apps.core.constants.STATUS_CANCELED"
+        # if log with status == "mk42.apps.core.constants.STATUS_PENDING" does not exist
+        # or log with status == "mk42.apps.core.constants.STATUS_ONGOING" exist
         condition = all([
             not self.logs.filter(status=self.STATUS_ONGOING).exists(),
             self.logs.filter(status=self.STATUS_PENDING).exists(),
@@ -134,13 +137,13 @@ class Event(models.Model):
 
     def log_ongoing(self, *args, **kwargs):
         """
-        Create event log with status == "mk42.apps.core.models.log.EventLog.STATUS_ONGOING".
+        Create event log with status == "mk42.apps.core.constants.STATUS_ONGOING".
 
         :param args: additional args.
         :type args: list.
         :param kwargs: additional args.
         :type kwargs: dict.
-        :return: event log model instance with status == "mk42.apps.core.models.log.EventLog.STATUS_ONGOING".
+        :return: event log model instance with status == "mk42.apps.core.constants.STATUS_ONGOING".
         :rtype: mk42.apps.core.models.log.EventLog.
         """
 
@@ -148,6 +151,10 @@ class Event(models.Model):
             "event": self,
             "status": self.STATUS_ONGOING,
         }
+        # can't create event logs with status == "mk42.apps.core.constants.STATUS_ONGOING"
+        # if log with status == "mk42.apps.core.constants.STATUS_FINISHED" exist
+        # if log with status == "mk42.apps.core.constants.STATUS_CANCELED" exist
+        # or log with status == "mk42.apps.core.constants.STATUS_PENDING" does not exist
         condition = all([
             not self.logs.filter(status=self.STATUS_FINISHED).exists(),
             not self.logs.filter(status=self.STATUS_CANCELED).exists(),
@@ -158,13 +165,13 @@ class Event(models.Model):
 
     def log_finished(self, *args, **kwargs):
         """
-        Create event log with status == "mk42.apps.core.models.log.EventLog.STATUS_FINISHED".
+        Create event log with status == "mk42.apps.core.constants.STATUS_FINISHED".
 
         :param args: additional args.
         :type args: list.
         :param kwargs: additional args.
         :type kwargs: dict.
-        :return: event log model instance with status == "mk42.apps.core.models.log.EventLog.STATUS_FINISHED".
+        :return: event log model instance with status == "mk42.apps.core.constants.STATUS_FINISHED".
         :rtype: mk42.apps.core.models.log.EventLog.
         """
 
@@ -172,6 +179,10 @@ class Event(models.Model):
             "event": self,
             "status": self.STATUS_FINISHED,
         }
+        # can't create event logs with status == "mk42.apps.core.constants.STATUS_FINISHED"
+        # if log with status == "mk42.apps.core.constants.STATUS_FINISHED" exist
+        # if log with status == "mk42.apps.core.constants.STATUS_CANCELED" exist
+        # or log with status == "mk42.apps.core.constants.STATUS_ONGOING" does not exist
         condition = all([
             not self.logs.filter(status=self.STATUS_FINISHED).exists(),
             not self.logs.filter(status=self.STATUS_CANCELED).exists(),
